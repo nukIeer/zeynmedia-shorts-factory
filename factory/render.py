@@ -89,10 +89,14 @@ def render_video(content, out_path, duration):
             first = grab()
             for _ in range(n_intro):
                 proc.stdin.write(first)
+            previews = {n_anim // 4: "25", n_anim // 2: "50", n_anim: "100"}
             for i in range(1, n_anim + 1):
                 t = steps * i / n_anim
                 page.evaluate(f"window.__seek({t}, {frame_ms})")
-                proc.stdin.write(grab())
+                frame = grab()
+                proc.stdin.write(frame)
+                if i in previews:
+                    Path(f"{out_path.with_suffix('')}-preview-{previews[i]}.jpg").write_bytes(frame)
                 if i % (FPS * 5) == 0:
                     print(f"[render] {i}/{n_anim} kare")
             for _ in range(n_outro):
