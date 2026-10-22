@@ -19,26 +19,26 @@ def _data_url(url):
         return ""
 
 
-def wikipedia_image(title, lang="en"):
-    params = {
-        "action": "query",
-        "format": "json",
-        "prop": "pageimages",
-        "piprop": "thumbnail",
-        "pithumbsize": 500,
-        "pilicense": "any",
-        "redirects": 1,
-        "titles": title,
-    }
+def _wiki_pages(params, lang):
+    base = {"action": "query", "format": "json", "prop": "pageimages", "piprop": "thumbnail",
+            "pithumbsize": 500, "pilicense": "any", "redirects": 1}
     try:
-        r = requests.get(f"https://{lang}.wikipedia.org/w/api.php", params=params, headers=UA, timeout=30)
+        r = requests.get(f"https://{lang}.wikipedia.org/w/api.php", params={**base, **params}, headers=UA, timeout=30)
         r.raise_for_status()
-        for page in r.json().get("query", {}).get("pages", {}).values():
+        pages = r.json().get("query", {}).get("pages", {}).values()
+        return sorted(pages, key=lambda p: p.get("index", 0))
+    except (requests.RequestException, ValueError) as e:
+        print(f"[assets] wikipedia hatası: {e}")
+        return []
+
+
+def wikipedia_image(title, lang="en"):
+    # Exact title first; fall back to search, which also resolves disambiguation pages
+    for params in ({"titles": title}, {"generator": "search", "gsrsearch": title, "gsrlimit": 5}):
+        for page in _wiki_pages(params, lang):
             src = page.get("thumbnail", {}).get("source")
             if src:
                 return src
-    except requests.RequestException as e:
-        print(f"[assets] wikipedia hatası {title}: {e}")
     return None
 
 
