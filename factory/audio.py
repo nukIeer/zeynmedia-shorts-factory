@@ -68,12 +68,15 @@ def audio_inputs(content, duration, intro_s, total_s):
         ms = int(sec * 1000)
         parts.append(
             f"[{idx}:a]aformat=sample_rates=44100:channel_layouts=stereo,"
-            f"volume={SFX_VOLUME[kind]},adelay={ms}|{ms}[s{used}]"
+            f"volume={SFX_VOLUME[kind]},adelay={ms}|{ms},apad,atrim=0:{total_s:.2f}[s{used}]"
         )
         labels.append(f"[s{used}]")
         used += 1
 
-    mix = f"amix=inputs={len(labels)}:normalize=0:duration=first," if len(labels) > 1 else ""
+    # Older ffmpeg amix has no normalize=0: pad every input to full length so amix's
+    # 1/N scaling stays constant, then undo it with volume=N
+    n = len(labels)
+    mix = f"amix=inputs={n}:duration=first,volume={n}," if n > 1 else ""
     parts.append(f"{''.join(labels)}{mix}alimiter=limit=0.95[aout]")
     desc = f"müzik: {music.name if music else 'yok'}, efekt: {used}"
     return args, ";".join(parts), "[aout]", desc
