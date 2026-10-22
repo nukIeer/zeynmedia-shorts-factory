@@ -52,6 +52,7 @@ def render_video(content, out_path, duration):
         afilter = "anull"
     cmd += [
         "-map", "0:v", "-map", "1:a", "-af", afilter, "-t", f"{total_s:.2f}",
+        "-vf", "scale=1080:1920:flags=lanczos,setsar=1",
         "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS),
         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out_path),
     ]
@@ -59,7 +60,7 @@ def render_video(content, out_path, duration):
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch(args=["--disable-web-security", "--font-render-hinting=none"])
-        page = browser.new_page(viewport={"width": 1600, "height": 1000}, device_scale_factor=SCALE)
+        page = browser.new_page(viewport={"width": 1600, "height": 1000})
         page.add_init_script(f"window.__RENDER_CONFIG__ = {json.dumps(config)};")
         page.goto(STUDIO.as_uri(), wait_until="networkidle", timeout=120_000)
         page.wait_for_function("window.__configLoaded === true && typeof window.__seek === 'function'", timeout=120_000)
@@ -70,7 +71,7 @@ def render_video(content, out_path, duration):
         page.wait_for_timeout(1000)
 
         box = page.locator("#stage").bounding_box()
-        clip = {"x": box["x"], "y": box["y"], "width": 360, "height": 640, "scale": 1}
+        clip = {"x": box["x"], "y": box["y"], "width": 360, "height": 640, "scale": SCALE}
         cdp = page.context.new_cdp_session(page)
         steps = page.evaluate("window.__steps")
 

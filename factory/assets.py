@@ -26,6 +26,7 @@ def wikipedia_image(title, lang="en"):
         "prop": "pageimages",
         "piprop": "thumbnail",
         "pithumbsize": 500,
+        "pilicense": "any",
         "redirects": 1,
         "titles": title,
     }
