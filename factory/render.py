@@ -4,6 +4,7 @@ import random
 import subprocess
 from pathlib import Path
 
+import imageio_ffmpeg
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -43,7 +44,7 @@ def render_video(content, out_path, duration):
     total_s = INTRO_S + duration + OUTRO_S
     music = _pick_music()
 
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(FPS), "-c:v", "mjpeg", "-i", "-"]
+    cmd = [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(FPS), "-c:v", "mjpeg", "-i", "-"]
     if music:
         cmd += ["-stream_loop", "-1", "-i", str(music)]
         afilter = f"afade=t=in:d=0.5,afade=t=out:st={total_s - 1.5:.2f}:d=1.5,volume=0.8"

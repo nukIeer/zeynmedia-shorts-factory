@@ -98,19 +98,24 @@ def _call_nim(prompt):
 
 
 def _call_gemini(prompt):
-    models = [m for m in [os.environ.get("GEMINI_MODEL"), "gemini-flash-latest", "gemini-2.5-flash", "gemini-2.0-flash"] if m]
+    models = [m for m in [os.environ.get("GEMINI_MODEL"), "gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"] if m]
     last = None
     for model in dict.fromkeys(models):
-        for attempt in range(3):
-            resp = requests.post(
-                GEMINI_URL.format(model=model),
-                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
-                json={
-                    "contents": [{"parts": [{"text": prompt}]}],
-                    "generationConfig": {"temperature": 0.8, "responseMimeType": "application/json"},
-                },
-                timeout=180,
-            )
+        config = {"temperature": 0.8, "responseMimeType": "application/json"}
+        if model.startswith("gemini-2.5"):
+            config["thinkingConfig"] = {"thinkingBudget": 0}
+        for attempt in range(2):
+            try:
+                resp = requests.post(
+                    GEMINI_URL.format(model=model),
+                    headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
+                    json={"contents": [{"parts": [{"text": prompt}]}], "generationConfig": config},
+                    timeout=90,
+                )
+            except requests.RequestException as e:
+                last = f"Gemini {model}: {e}"
+                print(f"[generate] {last[:160]}")
+                continue
             if resp.ok:
                 return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
             last = f"Gemini {model} {resp.status_code}: {resp.text[:300]}"
@@ -133,7 +138,7 @@ def generate_content(category, recent_topics, topic=None):
     )
 
     last_err = None
-    for attempt in range(3):
+    for attempt in range(2):
         text = call(prompt)
         try:
             return _validate(_extract_json(text))

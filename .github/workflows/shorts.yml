@@ -73,8 +73,6 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - uses: FedericoCarboni/setup-ffmpeg@v3
-
       - name: Install dependencies
         timeout-minutes: 10
         run: |
