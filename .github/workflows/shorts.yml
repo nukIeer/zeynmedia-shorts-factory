@@ -1,0 +1,81 @@
+name: Shorts Factory
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+    - cron: "0 13 * * *"
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Belirli bir konu (boş = rastgele)"
+        required: false
+        default: ""
+      privacy:
+        description: "YouTube görünürlüğü"
+        type: choice
+        options: [public, unlisted, private]
+        default: public
+      skip_upload:
+        description: "Sadece video üret, YouTube'a yükleme"
+        type: boolean
+        default: false
+      sample:
+        description: "NIM yerine örnek veriyle test et"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shorts-factory
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      NIM_MODEL: ${{ vars.NIM_MODEL }}
+      CONTENT_LANG: ${{ vars.CONTENT_LANG || 'tr' }}
+      INPUT_TOPIC: ${{ inputs.topic }}
+      YT_PRIVACY: ${{ inputs.privacy || vars.YT_PRIVACY || 'public' }}
+      SKIP_UPLOAD: ${{ inputs.skip_upload || secrets.YT_REFRESH_TOKEN == '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-color-emoji
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Produce short
+        run: python factory/main.py ${{ inputs.sample && '--sample' || '' }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: short-${{ github.run_id }}
+          path: output/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Save history
+        if: success()
+        run: |
+          git config user.name "zeynmedia-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/history.json
+          git diff --cached --quiet || (git commit -m "history: $(date -u +%F' '%H:%M)" && git push)

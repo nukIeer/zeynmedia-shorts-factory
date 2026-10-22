@@ -1,0 +1,34 @@
+{
+  "categories": [
+    "Football: all-time / season goal scorers comparison (players)",
+    "Football: Champions League goals by player across seasons",
+    "Football: club trophies won over the years",
+    "Football: market value of top players over seasons",
+    "Football: Turkish Süper Lig top scorers or clubs",
+    "Basketball: NBA points per season of star players",
+    "Tennis: Grand Slam titles race between legends",
+    "Formula 1: race wins by driver over seasons",
+    "Countries: GDP growth race (billion USD) over years",
+    "Countries: population race over decades (millions)",
+    "Countries: Olympic gold medals by games",
+    "Tech companies: annual revenue race (billion USD)",
+    "Social media: platform monthly active users over years (millions)",
+    "Smartphones: brand global market share over years",
+    "Music: most streamed artists yearly streams (billions)",
+    "YouTube: most subscribed channels growth (millions)",
+    "Cars: best-selling car brands sales over years (millions)",
+    "Richest people: net worth race over years (billion USD)",
+    "Video games: best-selling consoles cumulative sales (millions)",
+    "Movies: box office revenue of franchises by year (million USD)"
+  ],
+  "palettes": [
+    ["#2563eb", "#1e3a8a"],
+    ["#7c3aed", "#2e1065"],
+    ["#dc2626", "#450a0a"],
+    ["#059669", "#022c22"],
+    ["#ea580c", "#431407"],
+    ["#0891b2", "#083344"],
+    ["#db2777", "#500724"],
+    ["#334155", "#020617"]
+  ]
+}
