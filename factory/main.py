@@ -75,8 +75,8 @@ def main():
     history = load_history()
     if args.sample:
         content = json.loads(json.dumps(SAMPLE))
-    elif not os.environ.get("NVIDIA_API_KEY"):
-        print("[main] NVIDIA_API_KEY yok -> hazır içerik (config/presets.json) kullanılıyor")
+    elif not (os.environ.get("NVIDIA_API_KEY") or os.environ.get("GEMINI_API_KEY")):
+        print("[main] AI key yok -> hazır içerik (config/presets.json) kullanılıyor")
         content = pick_preset(history)
     else:
         from generate import generate_content

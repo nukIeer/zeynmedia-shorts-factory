@@ -41,7 +41,9 @@ jobs:
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       NIM_MODEL: ${{ vars.NIM_MODEL }}
+      GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
       CONTENT_LANG: ${{ vars.CONTENT_LANG || 'tr' }}
       INPUT_TOPIC: ${{ inputs.topic }}
       YT_PRIVACY: ${{ inputs.privacy || vars.YT_PRIVACY || 'public' }}

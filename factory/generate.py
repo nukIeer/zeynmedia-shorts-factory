@@ -75,9 +75,46 @@ def _validate(data):
     return data
 
 
-def generate_content(category, recent_topics, topic=None):
-    api_key = os.environ["NVIDIA_API_KEY"]
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+
+
+def _call_nim(prompt):
     model = os.environ.get("NIM_MODEL") or "meta/llama-3.3-70b-instruct"
+    resp = requests.post(
+        NIM_URL,
+        headers={"Authorization": f"Bearer {os.environ['NVIDIA_API_KEY']}", "Accept": "application/json"},
+        json={
+            "model": model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.8,
+            "top_p": 0.95,
+            "max_tokens": 3000,
+        },
+        timeout=180,
+    )
+    resp.raise_for_status()
+    return resp.json()["choices"][0]["message"]["content"]
+
+
+def _call_gemini(prompt):
+    model = os.environ.get("GEMINI_MODEL") or "gemini-flash-latest"
+    resp = requests.post(
+        GEMINI_URL.format(model=model),
+        headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
+        json={
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.8, "responseMimeType": "application/json"},
+        },
+        timeout=180,
+    )
+    if not resp.ok:
+        raise RuntimeError(f"Gemini {resp.status_code}: {resp.text[:300]}")
+    return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+
+
+def generate_content(category, recent_topics, topic=None):
+    call = _call_nim if os.environ.get("NVIDIA_API_KEY") else _call_gemini
+    print(f"[generate] sağlayıcı: {'NVIDIA NIM' if call is _call_nim else 'Gemini'}")
     lang = LANG_NAMES.get(os.environ.get("CONTENT_LANG", "tr"), "Turkish")
     prompt = PROMPT.format(
         category=category,
@@ -88,23 +125,10 @@ def generate_content(category, recent_topics, topic=None):
 
     last_err = None
     for attempt in range(3):
-        resp = requests.post(
-            NIM_URL,
-            headers={"Authorization": f"Bearer {api_key}", "Accept": "application/json"},
-            json={
-                "model": model,
-                "messages": [{"role": "user", "content": prompt}],
-                "temperature": 0.8,
-                "top_p": 0.95,
-                "max_tokens": 3000,
-            },
-            timeout=180,
-        )
-        resp.raise_for_status()
-        text = resp.json()["choices"][0]["message"]["content"]
+        text = call(prompt)
         try:
             return _validate(_extract_json(text))
         except (ValueError, json.JSONDecodeError) as e:
             last_err = e
             print(f"[generate] deneme {attempt + 1} başarısız: {e}")
-    raise RuntimeError(f"NIM geçerli içerik üretemedi: {last_err}")
+    raise RuntimeError(f"Model geçerli içerik üretemedi: {last_err}")

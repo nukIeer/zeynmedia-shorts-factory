@@ -14,12 +14,13 @@ Tam otomatik **Bar Chart Race YouTube Shorts** fabrikası. GitHub Actions günde
 
 | Secret | Açıklama |
 |---|---|
-| `NVIDIA_API_KEY` | build.nvidia.com'dan alınan `nvapi-...` key |
+| `NVIDIA_API_KEY` | build.nvidia.com'dan alınan `nvapi-...` key (öncelikli) |
+| `GEMINI_API_KEY` | Google AI Studio Gemini key'i (NVIDIA yoksa bu kullanılır) |
 | `YT_CLIENT_ID` | Google Cloud OAuth client ID |
 | `YT_CLIENT_SECRET` | Google Cloud OAuth client secret |
 | `YT_REFRESH_TOKEN` | Aşağıdaki script ile üretilir |
 
-`YT_REFRESH_TOKEN` yoksa video yalnızca üretilir ve Actions artifact olarak indirilebilir.
+Hiç AI key'i yoksa `config/presets.json` içindeki hazır içerikler sırayla kullanılır. `YT_REFRESH_TOKEN` yoksa video yalnızca üretilir ve Actions artifact olarak indirilebilir.
 
 ### 2. YouTube OAuth
 
