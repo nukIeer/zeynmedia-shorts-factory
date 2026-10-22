@@ -1,4 +1,5 @@
 import base64
+import re
 import urllib.parse
 
 import requests
@@ -65,7 +66,7 @@ def enrich_players(players):
         p["image"] = _data_url(image_url) if image_url else ""
 
         country = (p.get("country") or "").lower()
-        if len(country) == 2 and country.isalpha():
+        if re.fullmatch(r"[a-z]{2}(-[a-z]{3})?", country):
             p["logo"] = _data_url(f"https://flagcdn.com/w160/{urllib.parse.quote(country)}.png")
         else:
             p["logo"] = p["image"]

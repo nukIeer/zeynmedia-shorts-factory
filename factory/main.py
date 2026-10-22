@@ -48,6 +48,16 @@ def load_history():
         return []
 
 
+def pick_preset(history):
+    presets = json.loads((ROOT / "config" / "presets.json").read_text(encoding="utf-8"))
+    used = [h["topic"] for h in history]
+    unused = [p for p in presets if p["topic"] not in used]
+    if unused:
+        return random.choice(unused)
+    # All used: reuse the one uploaded longest ago
+    return min(presets, key=lambda p: max(i for i, t in enumerate(used) if t == p["topic"]))
+
+
 def slugify(text):
     text = re.sub(r"[^a-zA-Z0-9]+", "-", text.lower()).strip("-")
     return text[:60] or "short"
@@ -65,6 +75,9 @@ def main():
     history = load_history()
     if args.sample:
         content = json.loads(json.dumps(SAMPLE))
+    elif not os.environ.get("NVIDIA_API_KEY"):
+        print("[main] NVIDIA_API_KEY yok -> hazır içerik (config/presets.json) kullanılıyor")
+        content = pick_preset(history)
     else:
         from generate import generate_content
 

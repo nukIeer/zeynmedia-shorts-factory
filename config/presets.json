@@ -1,0 +1,204 @@
+[
+  {
+    "topic": "preset: Champions League titles by club per decade",
+    "headerTitle": "ŞAMPİYONLAR LİGİ",
+    "headerSubtitle": "KUPA YARIŞI (1950-2024)",
+    "players": {
+      "p1": {"name": "Real Madrid", "searchName": "Real Madrid CF", "country": "es", "color": "#6d28d9"},
+      "p2": {"name": "Milan", "searchName": "AC Milan", "country": "it", "color": "#dc2626"},
+      "p3": {"name": "Bayern", "searchName": "FC Bayern Munich", "country": "de", "color": "#b91c1c"},
+      "p4": {"name": "Liverpool", "searchName": "Liverpool F.C.", "country": "gb-eng", "color": "#be123c"},
+      "p5": {"name": "Barcelona", "searchName": "FC Barcelona", "country": "es", "color": "#1d4ed8"}
+    },
+    "statsData": [
+      {"label": "1950'LER", "p1": 4, "p2": 0, "p3": 0, "p4": 0, "p5": 0},
+      {"label": "1960'LAR", "p1": 2, "p2": 2, "p3": 0, "p4": 0, "p5": 0},
+      {"label": "1970'LER", "p1": 0, "p2": 0, "p3": 3, "p4": 2, "p5": 0},
+      {"label": "1980'LER", "p1": 0, "p2": 1, "p3": 0, "p4": 2, "p5": 0},
+      {"label": "1990'LAR", "p1": 1, "p2": 2, "p3": 0, "p4": 0, "p5": 1},
+      {"label": "2000'LER", "p1": 2, "p2": 2, "p3": 1, "p4": 1, "p5": 2},
+      {"label": "2010'LAR", "p1": 4, "p2": 0, "p3": 1, "p4": 1, "p5": 2},
+      {"label": "2020'LER", "p1": 2, "p2": 0, "p3": 1, "p4": 0, "p5": 0}
+    ],
+    "youtube": {
+      "title": "Şampiyonlar Ligi'nin En Büyüğü Kim? Kupa Yarışı 1950-2024 #shorts",
+      "description": "Real Madrid, Milan, Bayern, Liverpool ve Barcelona'nın Şampiyonlar Ligi kupalarını on yıllara göre yarıştırdık. Sence zirve tartışmalı mı? #şampiyonlarligi #realmadrid #futbol #barchartrace #shorts",
+      "tags": ["şampiyonlar ligi", "champions league", "real madrid", "milan", "bayern münih", "liverpool", "barcelona", "bar chart race", "futbol", "kupa", "ucl", "futbol istatistik"]
+    }
+  },
+  {
+    "topic": "preset: Ballon d'Or winners race 2007-2024",
+    "headerTitle": "BALLON D'OR",
+    "headerSubtitle": "ALTIN TOP YARIŞI (2007-2024)",
+    "players": {
+      "p1": {"name": "Messi", "searchName": "Lionel Messi", "country": "ar", "color": "#60a5fa"},
+      "p2": {"name": "Ronaldo", "searchName": "Cristiano Ronaldo", "country": "pt", "color": "#dc2626"},
+      "p3": {"name": "Modric", "searchName": "Luka Modrić", "country": "hr", "color": "#e11d48"},
+      "p4": {"name": "Benzema", "searchName": "Karim Benzema", "country": "fr", "color": "#2563eb"},
+      "p5": {"name": "Kaka", "searchName": "Kaká", "country": "br", "color": "#16a34a"},
+      "p6": {"name": "Rodri", "searchName": "Rodri (footballer, born 1996)", "country": "es", "color": "#0ea5e9"}
+    },
+    "statsData": [
+      {"label": "2007", "p1": 0, "p2": 0, "p3": 0, "p4": 0, "p5": 1, "p6": 0},
+      {"label": "2008", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2009", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2010", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2011", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2012", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2013", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2014", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2015", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2016", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2017", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2018", "p1": 0, "p2": 0, "p3": 1, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2019", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2021", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2022", "p1": 0, "p2": 0, "p3": 0, "p4": 1, "p5": 0, "p6": 0},
+      {"label": "2023", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2024", "p1": 0, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 1}
+    ],
+    "youtube": {
+      "title": "Messi 8 - Ronaldo 5! Ballon d'Or Yarışı 2007-2024 #shorts",
+      "description": "2007'den 2024'e Altın Top kazananlarını yarıştırdık. Messi'nin rekoru kırılır mı? Yorumlara yaz! #ballondor #messi #ronaldo #futbol #shorts",
+      "tags": ["ballon d'or", "altın top", "messi", "ronaldo", "modric", "benzema", "rodri", "kaka", "bar chart race", "futbol", "messi vs ronaldo", "futbol rekorları"]
+    }
+  },
+  {
+    "topic": "preset: Grand Slam titles Djokovic Nadal Federer Murray",
+    "headerTitle": "GRAND SLAM",
+    "headerSubtitle": "BÜYÜK ÜÇLÜ YARIŞI (2003-2023)",
+    "players": {
+      "p1": {"name": "Djokovic", "searchName": "Novak Djokovic", "country": "rs", "color": "#1d4ed8"},
+      "p2": {"name": "Nadal", "searchName": "Rafael Nadal", "country": "es", "color": "#ea580c"},
+      "p3": {"name": "Federer", "searchName": "Roger Federer", "country": "ch", "color": "#dc2626"},
+      "p4": {"name": "Murray", "searchName": "Andy Murray", "country": "gb-sct", "color": "#0891b2"}
+    },
+    "statsData": [
+      {"label": "2003", "p1": 0, "p2": 0, "p3": 1, "p4": 0},
+      {"label": "2004", "p1": 0, "p2": 0, "p3": 3, "p4": 0},
+      {"label": "2005", "p1": 0, "p2": 1, "p3": 2, "p4": 0},
+      {"label": "2006", "p1": 0, "p2": 1, "p3": 3, "p4": 0},
+      {"label": "2007", "p1": 0, "p2": 1, "p3": 3, "p4": 0},
+      {"label": "2008", "p1": 1, "p2": 2, "p3": 1, "p4": 0},
+      {"label": "2009", "p1": 0, "p2": 1, "p3": 2, "p4": 0},
+      {"label": "2010", "p1": 0, "p2": 3, "p3": 1, "p4": 0},
+      {"label": "2011", "p1": 3, "p2": 1, "p3": 0, "p4": 0},
+      {"label": "2012", "p1": 1, "p2": 1, "p3": 1, "p4": 1},
+      {"label": "2013", "p1": 1, "p2": 2, "p3": 0, "p4": 1},
+      {"label": "2014", "p1": 1, "p2": 1, "p3": 0, "p4": 0},
+      {"label": "2015", "p1": 3, "p2": 0, "p3": 0, "p4": 0},
+      {"label": "2016", "p1": 2, "p2": 0, "p3": 0, "p4": 1},
+      {"label": "2017", "p1": 0, "p2": 2, "p3": 2, "p4": 0},
+      {"label": "2018", "p1": 2, "p2": 1, "p3": 1, "p4": 0},
+      {"label": "2019", "p1": 2, "p2": 2, "p3": 0, "p4": 0},
+      {"label": "2020", "p1": 1, "p2": 1, "p3": 0, "p4": 0},
+      {"label": "2021", "p1": 3, "p2": 0, "p3": 0, "p4": 0},
+      {"label": "2022", "p1": 1, "p2": 2, "p3": 0, "p4": 0},
+      {"label": "2023", "p1": 3, "p2": 0, "p3": 0, "p4": 0}
+    ],
+    "youtube": {
+      "title": "Tenisin Kralı Kim? Djokovic vs Nadal vs Federer Grand Slam Yarışı #shorts",
+      "description": "Büyük Üçlü ve Murray'nin Grand Slam şampiyonluklarını yıl yıl yarıştırdık. Djokovic 24 kupayla zirvede! #tenis #djokovic #nadal #federer #shorts",
+      "tags": ["grand slam", "tenis", "djokovic", "nadal", "federer", "murray", "big three", "bar chart race", "wimbledon", "roland garros", "us open", "australian open"]
+    }
+  },
+  {
+    "topic": "preset: Formula 1 race wins by driver 2014-2024",
+    "headerTitle": "FORMULA 1",
+    "headerSubtitle": "YARIŞ GALİBİYETLERİ (2014-2024)",
+    "players": {
+      "p1": {"name": "Hamilton", "searchName": "Lewis Hamilton", "country": "gb", "color": "#14b8a6"},
+      "p2": {"name": "Verstappen", "searchName": "Max Verstappen", "country": "nl", "color": "#1e3a8a"},
+      "p3": {"name": "Rosberg", "searchName": "Nico Rosberg", "country": "de", "color": "#94a3b8"},
+      "p4": {"name": "Vettel", "searchName": "Sebastian Vettel", "country": "de", "color": "#dc2626"},
+      "p5": {"name": "Bottas", "searchName": "Valtteri Bottas", "country": "fi", "color": "#0ea5e9"},
+      "p6": {"name": "Leclerc", "searchName": "Charles Leclerc", "country": "mc", "color": "#ef4444"}
+    },
+    "statsData": [
+      {"label": "2014", "p1": 11, "p2": 0, "p3": 5, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2015", "p1": 10, "p2": 0, "p3": 6, "p4": 3, "p5": 0, "p6": 0},
+      {"label": "2016", "p1": 10, "p2": 1, "p3": 9, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2017", "p1": 9, "p2": 2, "p3": 0, "p4": 5, "p5": 3, "p6": 0},
+      {"label": "2018", "p1": 11, "p2": 2, "p3": 0, "p4": 5, "p5": 0, "p6": 0},
+      {"label": "2019", "p1": 11, "p2": 3, "p3": 0, "p4": 1, "p5": 4, "p6": 2},
+      {"label": "2020", "p1": 11, "p2": 2, "p3": 0, "p4": 0, "p5": 2, "p6": 0},
+      {"label": "2021", "p1": 8, "p2": 10, "p3": 0, "p4": 0, "p5": 1, "p6": 0},
+      {"label": "2022", "p1": 0, "p2": 15, "p3": 0, "p4": 0, "p5": 0, "p6": 3},
+      {"label": "2023", "p1": 0, "p2": 19, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2024", "p1": 2, "p2": 9, "p3": 0, "p4": 0, "p5": 0, "p6": 3}
+    ],
+    "youtube": {
+      "title": "Hamilton mı Verstappen mi? F1 Galibiyet Yarışı 2014-2024 #shorts",
+      "description": "Hibrit dönemde Formula 1 yarış galibiyetlerini yarıştırdık: Hamilton'ın Mercedes hakimiyeti ve Verstappen'in yükselişi. #f1 #formula1 #hamilton #verstappen #shorts",
+      "tags": ["formula 1", "f1", "hamilton", "verstappen", "rosberg", "vettel", "leclerc", "bottas", "bar chart race", "f1 galibiyet", "mercedes", "red bull"]
+    }
+  },
+  {
+    "topic": "preset: Olympic gold medals by country 1996-2024",
+    "headerTitle": "OLİMPİYAT ALTINLARI",
+    "headerSubtitle": "YAZ OYUNLARI (1996-2024)",
+    "players": {
+      "p1": {"name": "ABD", "searchName": "United States at the Olympics", "country": "us", "color": "#1d4ed8"},
+      "p2": {"name": "Çin", "searchName": "China at the Olympics", "country": "cn", "color": "#dc2626"},
+      "p3": {"name": "İngiltere", "searchName": "Great Britain at the Olympics", "country": "gb", "color": "#4338ca"},
+      "p4": {"name": "Japonya", "searchName": "Japan at the Olympics", "country": "jp", "color": "#be123c"},
+      "p5": {"name": "Almanya", "searchName": "Germany at the Olympics", "country": "de", "color": "#eab308"},
+      "p6": {"name": "Fransa", "searchName": "France at the Olympics", "country": "fr", "color": "#2563eb"}
+    },
+    "statsData": [
+      {"label": "1996", "p1": 44, "p2": 16, "p3": 1, "p4": 3, "p5": 20, "p6": 15},
+      {"label": "2000", "p1": 37, "p2": 28, "p3": 11, "p4": 5, "p5": 13, "p6": 13},
+      {"label": "2004", "p1": 36, "p2": 32, "p3": 9, "p4": 16, "p5": 13, "p6": 11},
+      {"label": "2008", "p1": 36, "p2": 48, "p3": 19, "p4": 9, "p5": 16, "p6": 7},
+      {"label": "2012", "p1": 46, "p2": 38, "p3": 29, "p4": 7, "p5": 11, "p6": 11},
+      {"label": "2016", "p1": 46, "p2": 26, "p3": 27, "p4": 12, "p5": 17, "p6": 10},
+      {"label": "2020", "p1": 39, "p2": 38, "p3": 22, "p4": 27, "p5": 10, "p6": 10},
+      {"label": "2024", "p1": 40, "p2": 40, "p3": 14, "p4": 20, "p5": 12, "p6": 16}
+    ],
+    "youtube": {
+      "title": "Olimpiyatların Gerçek Kralı! Altın Madalya Yarışı 1996-2024 #shorts",
+      "description": "ABD, Çin, İngiltere, Japonya, Almanya ve Fransa'nın Yaz Olimpiyatları altın madalyalarını topladık. Kim fark attı? #olimpiyat #olympics #altınmadalya #spor #shorts",
+      "tags": ["olimpiyat", "olympics", "altın madalya", "abd", "çin", "japonya", "paris 2024", "tokyo 2020", "bar chart race", "spor istatistik", "madalya tablosu", "yaz olimpiyatları"]
+    }
+  },
+  {
+    "topic": "preset: FIFA World Cup titles by country 1930-2022",
+    "headerTitle": "DÜNYA KUPASI",
+    "headerSubtitle": "ŞAMPİYONLUK YARIŞI (1930-2022)",
+    "players": {
+      "p1": {"name": "Brezilya", "searchName": "Brazil national football team", "country": "br", "color": "#16a34a"},
+      "p2": {"name": "Almanya", "searchName": "Germany national football team", "country": "de", "color": "#334155"},
+      "p3": {"name": "İtalya", "searchName": "Italy national football team", "country": "it", "color": "#2563eb"},
+      "p4": {"name": "Arjantin", "searchName": "Argentina national football team", "country": "ar", "color": "#7dd3fc"},
+      "p5": {"name": "Fransa", "searchName": "France national football team", "country": "fr", "color": "#1e40af"},
+      "p6": {"name": "Uruguay", "searchName": "Uruguay national football team", "country": "uy", "color": "#38bdf8"}
+    },
+    "statsData": [
+      {"label": "1930", "p1": 0, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 1},
+      {"label": "1934", "p1": 0, "p2": 0, "p3": 1, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1938", "p1": 0, "p2": 0, "p3": 1, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1950", "p1": 0, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 1},
+      {"label": "1954", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1958", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1962", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1970", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1974", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1978", "p1": 0, "p2": 0, "p3": 0, "p4": 1, "p5": 0, "p6": 0},
+      {"label": "1982", "p1": 0, "p2": 0, "p3": 1, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1986", "p1": 0, "p2": 0, "p3": 0, "p4": 1, "p5": 0, "p6": 0},
+      {"label": "1990", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1994", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "1998", "p1": 0, "p2": 0, "p3": 0, "p4": 0, "p5": 1, "p6": 0},
+      {"label": "2002", "p1": 1, "p2": 0, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2006", "p1": 0, "p2": 0, "p3": 1, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2014", "p1": 0, "p2": 1, "p3": 0, "p4": 0, "p5": 0, "p6": 0},
+      {"label": "2018", "p1": 0, "p2": 0, "p3": 0, "p4": 0, "p5": 1, "p6": 0},
+      {"label": "2022", "p1": 0, "p2": 0, "p3": 0, "p4": 1, "p5": 0, "p6": 0}
+    ],
+    "youtube": {
+      "title": "Dünya Kupası'nı En Çok Kim Kazandı? 1930-2022 Yarışı #shorts",
+      "description": "Brezilya, Almanya, İtalya, Arjantin, Fransa ve Uruguay'ın Dünya Kupası şampiyonluklarını yarıştırdık. 2026'da kim kazanır? #dünyakupası #worldcup #futbol #brezilya #shorts",
+      "tags": ["dünya kupası", "world cup", "brezilya", "almanya", "arjantin", "fransa", "italya", "uruguay", "bar chart race", "futbol tarihi", "fifa", "milli takım"]
+    }
+  }
+]
