@@ -1,15 +1,15 @@
 import base64
 import json
-import random
 import subprocess
 from pathlib import Path
 
 import imageio_ffmpeg
 from playwright.sync_api import sync_playwright
 
+from audio import audio_inputs
+
 ROOT = Path(__file__).resolve().parent.parent
 STUDIO = ROOT / "studio" / "index.html"
-MUSIC_DIR = ROOT / "assets" / "music"
 
 FPS = 30
 SCALE = 3  # 360x640 stage -> 1080x1920
@@ -34,30 +34,20 @@ def build_config(content, duration):
     }
 
 
-def _pick_music():
-    tracks = [p for p in MUSIC_DIR.glob("*") if p.suffix.lower() in {".mp3", ".m4a", ".wav", ".ogg"}]
-    return random.choice(tracks) if tracks else None
-
-
 def render_video(content, out_path, duration):
     config = build_config(content, duration)
     total_s = INTRO_S + duration + OUTRO_S
-    music = _pick_music()
+    audio_args, afilter, aout, adesc = audio_inputs(content, duration, INTRO_S, total_s)
 
     cmd = [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(FPS), "-c:v", "mjpeg", "-i", "-"]
-    if music:
-        cmd += ["-stream_loop", "-1", "-i", str(music)]
-        afilter = f"afade=t=in:d=0.5,afade=t=out:st={total_s - 1.5:.2f}:d=1.5,volume=0.8"
-    else:
-        cmd += ["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
-        afilter = "anull"
+    cmd += audio_args
     cmd += [
-        "-map", "0:v", "-map", "1:a", "-af", afilter, "-t", f"{total_s:.2f}",
+        "-filter_complex", afilter, "-map", "0:v", "-map", aout, "-t", f"{total_s:.2f}",
         "-vf", "scale=1080:1920:flags=lanczos,setsar=1",
         "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS),
         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out_path),
     ]
-    print(f"[render] müzik: {music.name if music else 'yok (sessiz)'}")
+    print(f"[render] ses -> {adesc}")
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch(args=["--disable-web-security", "--font-render-hinting=none"])
