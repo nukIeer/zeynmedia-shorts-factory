@@ -2,9 +2,8 @@ name: Shorts Factory
 
 on:
   schedule:
-    - cron: "0 7 * * *"
-    - cron: "0 13 * * *"
-    - cron: "0 18 * * *"
+    # Hourly gate; factory/schedule_gate.py picks 2-3 random hours per day
+    - cron: "11 * * * *"
   workflow_dispatch:
     inputs:
       topic:
@@ -28,14 +27,27 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: shorts-factory
-  cancel-in-progress: false
-
 jobs:
-  produce:
+  gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 5
+    outputs:
+      run: ${{ github.event_name == 'workflow_dispatch' && 'true' || steps.gate.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        if: github.event_name == 'schedule'
+      - id: gate
+        if: github.event_name == 'schedule'
+        run: python3 factory/schedule_gate.py
+
+  produce:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    concurrency:
+      group: shorts-factory
+      cancel-in-progress: false
     env:
       NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
@@ -49,6 +61,11 @@ jobs:
       YT_PRIVACY: ${{ inputs.privacy || vars.YT_PRIVACY || 'public' }}
       SKIP_UPLOAD: ${{ inputs.skip_upload || secrets.YT_REFRESH_TOKEN == '' }}
     steps:
+      - name: Random minute jitter
+        if: github.event_name == 'schedule'
+        # Kept well under an hour so history is pushed before the next hourly gate
+        run: sleep $((RANDOM % 1500))
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
