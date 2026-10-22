@@ -1879,7 +1879,8 @@
 
             {/* DİK KÖŞELİ (rounded-none) SİMÜLASYON EKRANI */}
             <div id="stage" className="relative shadow-[0_20px_60px_rgba(0,0,0,0.8)] ring-1 ring-white/10 rounded-none" style={{ ...dynamicStyles, transform: isFullscreen ? 'scale(1.1)' : 'scale(1)', transition: 'transform 0.3s ease' }}>
-              {bgMedia && bgMediaType === 'image' && <img src={bgMedia} className="absolute inset-0 w-full h-full object-cover z-0" alt="Background" />}
+              {bgMedia && bgMediaType === 'image' && <img src={bgMedia} className="absolute inset-0 w-full h-full object-cover z-0" alt="Background" style={RENDER_MODE ? { filter: 'blur(3px) saturate(1.1)', transform: 'scale(1.05)' } : undefined} />}
+              {RENDER_MODE && bgMedia && <div className="absolute inset-0 z-0" style={{ background: `linear-gradient(180deg, ${bgColor2}cc 0%, rgba(2,6,23,0.55) 45%, ${bgColor2}dd 100%)` }}></div>}
               {bgMedia && bgMediaType === 'video' && <video src={bgMedia} autoPlay loop muted className="absolute inset-0 w-full h-full object-cover z-0" />}
 
               <div className="absolute inset-0 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-40 mix-blend-overlay z-[1]"></div>

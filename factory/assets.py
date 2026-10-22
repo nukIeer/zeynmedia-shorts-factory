@@ -1,4 +1,6 @@
 import base64
+import os
+import random
 import re
 import urllib.parse
 
@@ -57,6 +59,30 @@ def sportsdb_image(name):
     except (requests.RequestException, ValueError):
         pass
     return None
+
+
+def pixabay_background(query):
+    key = os.environ.get("PIXABAY_API_KEY")
+    if not key or not query:
+        return ""
+    try:
+        r = requests.get(
+            "https://pixabay.com/api/",
+            params={"key": key, "q": query[:100], "image_type": "photo", "orientation": "vertical",
+                    "safesearch": "true", "per_page": 20, "order": "popular"},
+            timeout=30,
+        )
+        r.raise_for_status()
+        hits = r.json().get("hits", [])
+    except (requests.RequestException, ValueError) as e:
+        print(f"[assets] pixabay hatası: {e}")
+        return ""
+    if not hits:
+        print(f"[assets] pixabay sonuç yok: {query}")
+        return ""
+    hit = random.choice(hits[:10])
+    print(f"[assets] arka plan: '{query}' -> {hit.get('pageURL')}")
+    return _data_url(hit["largeImageURL"])
 
 
 def enrich_players(players):

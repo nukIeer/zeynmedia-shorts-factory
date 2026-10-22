@@ -24,6 +24,8 @@ Rules:
 - player "name": short display name (max 12 chars). "searchName": exact English Wikipedia article title.
 - "country": ISO 3166-1 alpha-2 lowercase code of the competitor's country (or null if not applicable).
 - "color": a vivid hex color that matches the competitor (club/brand/flag colour), all distinct.
+- "backgroundQuery": 1-3 English words for a stock photo that fits the topic as a background
+  (e.g. "football stadium", "race track", "city skyline"); no people's names.
 - All on-screen and YouTube text in {lang}.
 - youtube.title: max 90 chars, hooky, ends with " #shorts". youtube.description: 2-4 sentences + 5 hashtags.
   youtube.tags: 12-20 SEO keywords (no '#').
@@ -33,6 +35,7 @@ Return ONLY valid JSON, no markdown, exactly this shape:
   "topic": "short english description of the topic",
   "headerTitle": "...",
   "headerSubtitle": "...",
+  "backgroundQuery": "...",
   "players": {{
     "p1": {{"name": "...", "searchName": "...", "country": "ar", "color": "#2563eb"}}
   }},

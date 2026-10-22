@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from assets import enrich_players  # noqa: E402
+from assets import enrich_players, pixabay_background  # noqa: E402
 from render import render_video  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -95,6 +95,9 @@ def main():
     enrich_players(content["players"])
     c1, c2 = random.choice(TOPICS["palettes"])
     content["style"] = {"bgType": "gradient", "bgColor1": c1, "bgColor2": c2}
+    bg = pixabay_background(content.get("backgroundQuery") or "")
+    if bg:
+        content["style"].update({"bgMedia": bg, "bgMediaType": "image"})
 
     steps = len(content["statsData"])
     duration = max(15.0, min(40.0, steps * 2.4))
@@ -113,7 +116,7 @@ def main():
 
         video_id = upload_video(video_path, content["youtube"], privacy=args.privacy)
 
-    meta = {k: v for k, v in content.items() if k != "players"}
+    meta = {k: v for k, v in content.items() if k not in ("players", "style")}
     meta["players"] = {pid: {k: p.get(k) for k in ("name", "searchName", "country", "color")} for pid, p in content["players"].items()}
     meta["video_id"] = video_id
     video_path.with_suffix(".json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
