@@ -97,13 +97,38 @@ def _call_nim(prompt):
     return resp.json()["choices"][0]["message"]["content"]
 
 
+def _gemini_text_models():
+    """Currently available text models, flash/lite first (older names get retired)."""
+    try:
+        r = requests.get(
+            "https://generativelanguage.googleapis.com/v1beta/models",
+            headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
+            params={"pageSize": 200},
+            timeout=30,
+        )
+        r.raise_for_status()
+    except requests.RequestException as e:
+        print(f"[generate] model listesi alınamadı: {e}")
+        return []
+    skip = ("image", "tts", "audio", "live", "embedding", "vision", "robotics", "computer", "learnlm", "gemma")
+    names = [
+        m["name"].removeprefix("models/")
+        for m in r.json().get("models", [])
+        if "generateContent" in m.get("supportedGenerationMethods", [])
+        and "gemini" in m["name"]
+        and not any(s in m["name"] for s in skip)
+    ]
+    names.sort(reverse=True)
+    names.sort(key=lambda n: ("flash" not in n, "preview" in n or "exp" in n))
+    print(f"[generate] mevcut Gemini modelleri: {names[:8]}")
+    return names
+
+
 def _call_gemini(prompt):
-    models = [m for m in [os.environ.get("GEMINI_MODEL"), "gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"] if m]
+    models = [m for m in [os.environ.get("GEMINI_MODEL"), "gemini-flash-latest", *_gemini_text_models()] if m]
     last = None
-    for model in dict.fromkeys(models):
+    for model in list(dict.fromkeys(models))[:6]:
         config = {"temperature": 0.8, "responseMimeType": "application/json"}
-        if model.startswith("gemini-2.5"):
-            config["thinkingConfig"] = {"thinkingBudget": 0}
         for attempt in range(2):
             try:
                 resp = requests.post(
