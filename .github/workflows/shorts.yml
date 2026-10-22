@@ -76,10 +76,30 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
+      - name: Publish release
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          meta=$(ls output/*.json | head -1)
+          base="${meta%.json}"
+          tag="video-$(basename "$base" | cut -c1-15)"
+          python - "$meta" > notes.md <<'EOF'
+          import json, sys
+          m = json.load(open(sys.argv[1], encoding="utf-8"))
+          yt = m["youtube"]
+          print(f"**{m['headerTitle']}** - {m['headerSubtitle']}\n")
+          if m.get("video_id"):
+              print(f"YouTube: https://youtube.com/shorts/{m['video_id']}\n")
+          print(f"Konu: {m['topic']}\n\n### Açıklama\n{yt['description']}\n\n### Etiketler\n{', '.join(yt['tags'])}")
+          EOF
+          title=$(python -c "import json,sys;print(json.load(open(sys.argv[1],encoding='utf-8'))['youtube']['title'])" "$meta")
+          gh release create "$tag" output/* --title "$title" --notes-file notes.md
+
       - name: Save history
         if: success()
         run: |
           git config user.name "zeynmedia-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/history.json
-          git diff --cached --quiet || (git commit -m "history: $(date -u +%F' '%H:%M)" && git push)
+          git diff --cached --quiet || (git commit -m "history: $(date -u +%F' '%H:%M)" && git pull --rebase -q && git push)

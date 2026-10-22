@@ -2,6 +2,7 @@ import json
 import os
 import random
 import re
+import time
 
 import requests
 
@@ -97,19 +98,27 @@ def _call_nim(prompt):
 
 
 def _call_gemini(prompt):
-    model = os.environ.get("GEMINI_MODEL") or "gemini-flash-latest"
-    resp = requests.post(
-        GEMINI_URL.format(model=model),
-        headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
-        json={
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0.8, "responseMimeType": "application/json"},
-        },
-        timeout=180,
-    )
-    if not resp.ok:
-        raise RuntimeError(f"Gemini {resp.status_code}: {resp.text[:300]}")
-    return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+    models = [m for m in [os.environ.get("GEMINI_MODEL"), "gemini-flash-latest", "gemini-2.5-flash", "gemini-2.0-flash"] if m]
+    last = None
+    for model in dict.fromkeys(models):
+        for attempt in range(3):
+            resp = requests.post(
+                GEMINI_URL.format(model=model),
+                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
+                json={
+                    "contents": [{"parts": [{"text": prompt}]}],
+                    "generationConfig": {"temperature": 0.8, "responseMimeType": "application/json"},
+                },
+                timeout=180,
+            )
+            if resp.ok:
+                return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+            last = f"Gemini {model} {resp.status_code}: {resp.text[:300]}"
+            print(f"[generate] {last[:160]}")
+            if resp.status_code not in (429, 500, 502, 503, 504):
+                break
+            time.sleep(10 * (attempt + 1))
+    raise RuntimeError(last)
 
 
 def generate_content(category, recent_topics, topic=None):

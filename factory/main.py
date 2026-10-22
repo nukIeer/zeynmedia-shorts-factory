@@ -83,7 +83,11 @@ def main():
 
         category = args.category or random.choice(TOPICS["categories"])
         print(f"[main] kategori: {category}")
-        content = generate_content(category, [h["topic"] for h in history], args.topic)
+        try:
+            content = generate_content(category, [h["topic"] for h in history], args.topic)
+        except Exception as e:
+            print(f"[main] AI başarısız ({e}); hazır içeriğe geçiliyor")
+            content = pick_preset(history)
 
     print(f"[main] konu: {content['topic']}")
     print(f"[main] başlık: {content['youtube']['title']}")
@@ -101,10 +105,6 @@ def main():
     render_video(content, video_path, duration)
     print(f"[main] video: {video_path} ({video_path.stat().st_size / 1e6:.1f} MB)")
 
-    meta = {k: v for k, v in content.items() if k != "players"}
-    meta["players"] = {pid: {k: p.get(k) for k in ("name", "searchName", "country", "color")} for pid, p in content["players"].items()}
-    video_path.with_suffix(".json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
-
     video_id = None
     if args.no_upload:
         print("[main] yükleme atlandı")
@@ -112,6 +112,11 @@ def main():
         from upload import upload_video
 
         video_id = upload_video(video_path, content["youtube"], privacy=args.privacy)
+
+    meta = {k: v for k, v in content.items() if k != "players"}
+    meta["players"] = {pid: {k: p.get(k) for k in ("name", "searchName", "country", "color")} for pid, p in content["players"].items()}
+    meta["video_id"] = video_id
+    video_path.with_suffix(".json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
 
     if not args.sample:
         history.append({
