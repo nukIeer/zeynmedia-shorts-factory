@@ -73,6 +73,7 @@ def audio_inputs(content, duration, intro_s, total_s):
         labels.append(f"[s{used}]")
         used += 1
 
-    parts.append(f"{''.join(labels)}amix=inputs={len(labels)}:normalize=0:duration=first,alimiter=limit=0.95[aout]")
+    mix = f"amix=inputs={len(labels)}:normalize=0:duration=first," if len(labels) > 1 else ""
+    parts.append(f"{''.join(labels)}{mix}alimiter=limit=0.95[aout]")
     desc = f"müzik: {music.name if music else 'yok'}, efekt: {used}"
     return args, ";".join(parts), "[aout]", desc
