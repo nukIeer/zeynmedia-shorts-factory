@@ -1,0 +1,204 @@
+{
+  "brand": "ZEYN MEDYA",
+  "durationSec": 18,
+  "sfx": true,
+  "showDeltas": true,
+  "valueFormat": "int",
+  "template": "bar",
+  "title": "Djokovic vs Nadal vs Federer",
+  "subtitle": "Grand Slams Per Year",
+  "stepIcon": "trophy",
+  "steps": [
+    {
+      "label": "2003",
+      "values": {
+        "djo": 0,
+        "nad": 0,
+        "fed": 1
+      }
+    },
+    {
+      "label": "2004",
+      "values": {
+        "djo": 0,
+        "nad": 0,
+        "fed": 3
+      }
+    },
+    {
+      "label": "2005",
+      "values": {
+        "djo": 0,
+        "nad": 1,
+        "fed": 2
+      }
+    },
+    {
+      "label": "2006",
+      "values": {
+        "djo": 0,
+        "nad": 1,
+        "fed": 3
+      }
+    },
+    {
+      "label": "2007",
+      "values": {
+        "djo": 0,
+        "nad": 1,
+        "fed": 3
+      }
+    },
+    {
+      "label": "2008",
+      "values": {
+        "djo": 1,
+        "nad": 2,
+        "fed": 1
+      }
+    },
+    {
+      "label": "2009",
+      "values": {
+        "djo": 0,
+        "nad": 1,
+        "fed": 2
+      }
+    },
+    {
+      "label": "2010",
+      "values": {
+        "djo": 0,
+        "nad": 3,
+        "fed": 1
+      }
+    },
+    {
+      "label": "2011",
+      "values": {
+        "djo": 3,
+        "nad": 1,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2012",
+      "values": {
+        "djo": 1,
+        "nad": 1,
+        "fed": 1
+      }
+    },
+    {
+      "label": "2013",
+      "values": {
+        "djo": 1,
+        "nad": 2,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2014",
+      "values": {
+        "djo": 1,
+        "nad": 1,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2015",
+      "values": {
+        "djo": 3,
+        "nad": 0,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2016",
+      "values": {
+        "djo": 2,
+        "nad": 0,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2017",
+      "values": {
+        "djo": 0,
+        "nad": 2,
+        "fed": 2
+      }
+    },
+    {
+      "label": "2018",
+      "values": {
+        "djo": 2,
+        "nad": 1,
+        "fed": 1
+      }
+    },
+    {
+      "label": "2019",
+      "values": {
+        "djo": 2,
+        "nad": 2,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2020",
+      "values": {
+        "djo": 1,
+        "nad": 1,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2021",
+      "values": {
+        "djo": 3,
+        "nad": 0,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2022",
+      "values": {
+        "djo": 1,
+        "nad": 2,
+        "fed": 0
+      }
+    },
+    {
+      "label": "2023",
+      "values": {
+        "djo": 3,
+        "nad": 0,
+        "fed": 0
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "djo",
+      "name": "Djokovic",
+      "color": "#e5484d",
+      "image": "assets/players/novak-djokovic.png",
+      "flag": "assets/flags/rs.png"
+    },
+    {
+      "id": "nad",
+      "name": "Nadal",
+      "color": "#f5a524",
+      "image": "assets/players/rafael-nadal.png",
+      "flag": "assets/flags/es.png"
+    },
+    {
+      "id": "fed",
+      "name": "Federer",
+      "color": "#7cc0f5",
+      "image": "assets/players/roger-federer.png",
+      "flag": "assets/flags/ch.png"
+    }
+  ]
+}

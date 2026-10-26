@@ -1,0 +1,141 @@
+{
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "grid",
+    "title": "Champions League",
+    "subtitle": "All Winners",
+    "stepIcon": "none",
+    "steps": [
+      {
+        "label": "1950s",
+        "values": {
+          "rma": 4,
+          "mil": 0,
+          "bay": 0,
+          "liv": 0,
+          "bar": 0,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1960s",
+        "values": {
+          "rma": 2,
+          "mil": 2,
+          "bay": 0,
+          "liv": 0,
+          "bar": 0,
+          "oth": 6
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "rma": 0,
+          "mil": 0,
+          "bay": 3,
+          "liv": 2,
+          "bar": 0,
+          "oth": 5
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "rma": 0,
+          "mil": 1,
+          "bay": 0,
+          "liv": 2,
+          "bar": 0,
+          "oth": 7
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "rma": 1,
+          "mil": 2,
+          "bay": 0,
+          "liv": 0,
+          "bar": 1,
+          "oth": 6
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "rma": 2,
+          "mil": 2,
+          "bay": 1,
+          "liv": 1,
+          "bar": 2,
+          "oth": 2
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "rma": 4,
+          "mil": 0,
+          "bay": 1,
+          "liv": 1,
+          "bar": 2,
+          "oth": 2
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "rma": 2,
+          "mil": 0,
+          "bay": 1,
+          "liv": 0,
+          "bar": 0,
+          "oth": 2
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "rma",
+      "name": "Real",
+      "color": "#ffffff",
+      "team": "Real Madrid"
+    },
+    {
+      "id": "mil",
+      "name": "Milan",
+      "color": "#ffffff",
+      "team": "AC Milan"
+    },
+    {
+      "id": "bay",
+      "name": "Bayern",
+      "color": "#ffffff",
+      "team": "Bayern Munich"
+    },
+    {
+      "id": "liv",
+      "name": "LFC",
+      "color": "#ffffff",
+      "team": "Liverpool"
+    },
+    {
+      "id": "bar",
+      "name": "Barça",
+      "color": "#ffffff",
+      "team": "Barcelona"
+    },
+    {
+      "id": "oth",
+      "name": "Others",
+      "color": "#ffffff",
+      "others": true
+    }
+  ]
+}

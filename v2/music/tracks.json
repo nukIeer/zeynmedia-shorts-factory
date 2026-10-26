@@ -1,0 +1,84 @@
+[
+  {
+    "file": "without-me.mp3",
+    "title": "Eminem - Without Me",
+    "youtube": "YVkUvmDQ3HY",
+    "start": 88.4,
+    "hookScore": 0.77
+  },
+  {
+    "file": "movie-finale.mp3",
+    "title": "Madlib - Movie Finale",
+    "youtube": "CLdaSAQ8RNY",
+    "start": 71.5,
+    "hookScore": 0.92
+  },
+  {
+    "file": "tous-les-memes-slowed.mp3",
+    "title": "Stromae - tous les mêmes [slowed//reverb] (_Acantha_)",
+    "youtube": "aBKEt3MhNMM",
+    "start": 49.0,
+    "hookScore": 0.89
+  },
+  {
+    "file": "feet-dont-fail-me-now.mp3",
+    "title": "Joy Crookes - Feet Don't Fail Me Now",
+    "youtube": "xLFCcnYSCyE",
+    "start": 33.0,
+    "hookScore": 0.91
+  },
+  {
+    "file": "xo-tour-llif3.mp3",
+    "title": "Lil Uzi Vert - XO Tour Llif3",
+    "youtube": "WrsFXgQk5UI",
+    "start": 53.0,
+    "hookScore": 0.94
+  },
+  {
+    "file": "till-i-collapse.mp3",
+    "title": "Eminem - Till I Collapse",
+    "youtube": "Obim8BYGnOE",
+    "start": 91.4,
+    "hookScore": 0.95
+  },
+  {
+    "file": "lose-yourself.mp3",
+    "title": "Eminem - Lose Yourself",
+    "youtube": "7YuAzR2XVAM",
+    "start": 0
+  },
+  {
+    "file": "mockingbird.mp3",
+    "title": "Eminem - Mockingbird",
+    "youtube": "S9bCLPwzSC0",
+    "start": 0
+  },
+  {
+    "file": "murder-in-my-mind.mp3",
+    "title": "Kordhell - Murder In My Mind",
+    "youtube": "RXRWE_XQ8aE",
+    "start": 36.7,
+    "hookScore": 0.94
+  },
+  {
+    "file": "metamorphosis.mp3",
+    "title": "Interworld - Metamorphosis",
+    "youtube": "lJvRohYSrZM",
+    "start": 50.5,
+    "hookScore": 0.95
+  },
+  {
+    "file": "another-love.mp3",
+    "title": "Tom Odell - Another Love",
+    "youtube": "MwpMEbgC7DA",
+    "start": 113.1,
+    "hookScore": 0.99
+  },
+  {
+    "file": "sleepwalker.mp3",
+    "title": "akiaura - Sleepwalker",
+    "youtube": "DrJ7grCnwUc",
+    "start": 53.9,
+    "hookScore": 0.84
+  }
+]

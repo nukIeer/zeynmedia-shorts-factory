@@ -1,0 +1,108 @@
+{
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "diamond",
+    "title": "Hamilton vs Verstappen",
+    "subtitle": "Most Race Wins",
+    "stepIcon": "none",
+    "steps": [
+      {
+        "label": "2014",
+        "values": {
+          "ham": 11,
+          "ver": 0
+        }
+      },
+      {
+        "label": "2015",
+        "values": {
+          "ham": 10,
+          "ver": 0
+        }
+      },
+      {
+        "label": "2016",
+        "values": {
+          "ham": 10,
+          "ver": 1
+        }
+      },
+      {
+        "label": "2017",
+        "values": {
+          "ham": 9,
+          "ver": 2
+        }
+      },
+      {
+        "label": "2018",
+        "values": {
+          "ham": 11,
+          "ver": 2
+        }
+      },
+      {
+        "label": "2019",
+        "values": {
+          "ham": 11,
+          "ver": 3
+        }
+      },
+      {
+        "label": "2020",
+        "values": {
+          "ham": 11,
+          "ver": 2
+        }
+      },
+      {
+        "label": "2021",
+        "values": {
+          "ham": 8,
+          "ver": 10
+        }
+      },
+      {
+        "label": "2022",
+        "values": {
+          "ham": 0,
+          "ver": 15
+        }
+      },
+      {
+        "label": "2023",
+        "values": {
+          "ham": 0,
+          "ver": 19
+        }
+      },
+      {
+        "label": "2024",
+        "values": {
+          "ham": 2,
+          "ver": 9
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "ham",
+      "name": "Hamilton",
+      "color": "#14b8a6",
+      "player": "Lewis Hamilton",
+      "country": "gb"
+    },
+    {
+      "id": "ver",
+      "name": "Verstappen",
+      "color": "#1e3a8a",
+      "player": "Max Verstappen",
+      "country": "nl"
+    }
+  ]
+}
