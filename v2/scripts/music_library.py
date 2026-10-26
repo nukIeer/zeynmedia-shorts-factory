@@ -80,8 +80,8 @@ def main():
         if SKIP_PATTERNS.search(p.stem) or p.suffix == ".MP3":
             skipped.append(p.name)
             continue
-        if p.name in old and old[p.name].get("manual"):
-            tracks.append(old[p.name])  # hand-tuned start wins
+        if p.name in old and (old[p.name].get("manual") or old[p.name].get("excluded")):
+            tracks.append(old[p.name])  # choices made in tools/hook-picker.html win
             continue
         e = energy_curve(decode(p))
         duration = round(len(e) * HOP, 1)

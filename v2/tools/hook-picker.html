@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Müzik Başlangıç Seçici</title>
+<style>
+:root {
+  --bg: #0b0f1a; --panel: #121829; --panel2: #182037; --line: #263052;
+  --text: #e6e9f5; --muted: #8b93b3; --accent: #7c5cff; --accent2: #22d3a6;
+  --warn: #f5a524; --danger: #f43f5e; --win: rgba(124, 92, 255, 0.28);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; height: 100vh; display: flex; flex-direction: column; }
+header { display: flex; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--panel); flex-wrap: wrap; }
+header h1 { font-size: 16px; margin: 0 12px 0 0; }
+button, label.btn { background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; font: inherit; cursor: pointer; }
+button:hover, label.btn:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+button.ok { background: var(--accent2); border-color: var(--accent2); color: #062018; font-weight: 700; }
+button.danger { border-color: var(--danger); color: var(--danger); }
+input[type=number], input[type=search] { background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font: inherit; }
+input[type=number] { width: 70px; }
+.stat { color: var(--muted); margin-left: auto; }
+main { flex: 1; display: flex; min-height: 0; }
+aside { width: 360px; border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; background: var(--panel); }
+aside .filters { padding: 10px; display: flex; gap: 8px; }
+aside .filters input { flex: 1; }
+#list { overflow-y: auto; flex: 1; }
+.item { padding: 9px 12px; border-bottom: 1px solid var(--line); cursor: pointer; display: flex; gap: 8px; align-items: center; }
+.item:hover { background: var(--panel2); }
+.item.active { background: #221c46; }
+.item .name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); flex: none; }
+.dot.ok { background: var(--accent2); } .dot.ex { background: var(--danger); } .dot.auto { background: var(--warn); }
+.item .t { color: var(--muted); font-variant-numeric: tabular-nums; }
+section { flex: 1; padding: 20px 24px; overflow-y: auto; min-width: 0; }
+#title { font-size: 18px; font-weight: 700; margin: 0 0 4px; word-break: break-all; }
+#meta { color: var(--muted); margin-bottom: 16px; }
+.wave { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; height: 220px; cursor: crosshair; overflow: hidden; }
+canvas { width: 100%; height: 100%; display: block; }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; align-items: center; }
+.big { font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; margin-right: 8px; }
+.help { color: var(--muted); font-size: 13px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-top: 18px; }
+.help kbd { background: var(--panel2); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; font-family: inherit; color: var(--text); }
+.empty { color: var(--muted); padding: 60px 0; text-align: center; font-size: 15px; }
+@media (max-width: 760px) { main { flex-direction: column; } aside { width: auto; max-height: 40vh; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>🎵 Müzik Başlangıç Seçici</h1>
+  <button id="pick" class="primary">Klasörü seç</button><input id="folder" type="file" webkitdirectory multiple hidden>
+  <span>Pencere</span><input id="win" type="number" min="5" max="60" step="1" value="18"><span>sn</span>
+  <button id="export" class="ok" disabled>library.json indir</button>
+  <span class="stat" id="stat"></span>
+  <span id="saved" style="color: var(--accent2)"></span>
+</header>
+<main>
+  <aside>
+    <div class="filters"><input id="q" type="search" placeholder="Ara…"><button id="nextTodo" title="Sıradaki onaylanmamış">Sıradaki ▶</button></div>
+    <div id="list"></div>
+  </aside>
+  <section id="editor">
+    <div class="empty" id="empty">Müzik klasörünü seç (içinde <b>library.json</b> varsa otomatik başlangıçlar yüklenir).</div>
+    <div id="panel" hidden>
+      <div id="title"></div>
+      <div id="meta"></div>
+      <div class="wave" id="wave"><canvas id="cv"></canvas></div>
+      <div class="controls">
+        <span class="big" id="startLabel">0:00.0</span>
+        <button id="play" class="primary">▶ Dinle (Space)</button>
+        <button id="back">−1 sn</button><button id="back01">−0.1</button>
+        <button id="fwd01">+0.1</button><button id="fwd">+1 sn</button>
+        <button id="snap" title="Yakındaki en güçlü vuruşa yasla">Vuruşa yasla (D)</button>
+        <button id="approve" class="ok">✓ Onayla ve sıradaki (Enter)</button>
+        <button id="exclude" class="danger">Kullanma (X)</button>
+      </div>
+      <div class="help">
+        Dalga formuna <b>tıkla</b> = başlangıcı oraya koy (mor alan videoda çalacak kısım). <kbd>Space</kbd> dinle/durdur ·
+        <kbd>←</kbd>/<kbd>→</kbd> 0.1 sn · <kbd>Shift</kbd>+ok 1 sn · <kbd>D</kbd> vuruşa yasla · <kbd>Enter</kbd> onayla ve sıradaki ·
+        <kbd>X</kbd> bu parçayı kullanma · <kbd>N</kbd> sıradaki onaylanmamış. Seçimler tarayıcıda otomatik saklanır; bitince
+        <b>library.json indir</b> deyip müzik klasöründeki dosyanın yerine koy.
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const AUDIO_EXT = /\.(mp3|m4a|wav|ogg|opus|webm)$/i;
+const state = { files: new Map(), lib: new Map(), order: [], current: null, buffer: null, peaks: null, energy: null, src: null, playStart: 0, playOffset: 0, raf: 0 };
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+const $ = (id) => document.getElementById(id);
+const fmt = (s) => `${Math.floor(s / 60)}:${(s % 60).toFixed(1).padStart(4, '0')}`;
+const winLen = () => Math.max(5, Number($('win').value) || 18);
+const storeKey = () => 'hookpicker:' + state.order.length + ':' + (state.order[0] || '');
+
+function libraryJson() {
+  return JSON.stringify(state.order.map((n) => state.lib.get(n)), null, 2) + '\n';
+}
+
+let writeChain = Promise.resolve();
+function save() {
+  try { localStorage.setItem(storeKey(), JSON.stringify([...state.lib.values()])); } catch (e) {}
+  renderStat();
+  if (!state.dir) return;
+  // Write straight into the folder's library.json so every decision is kept and can be revised later
+  writeChain = writeChain.then(async () => {
+    try {
+      const fh = await state.dir.getFileHandle('library.json', { create: true });
+      const w = await fh.createWritable();
+      await w.write(libraryJson());
+      await w.close();
+      $('saved').textContent = '✓ library.json kaydedildi ' + new Date().toLocaleTimeString('tr-TR');
+    } catch (e) {
+      $('saved').textContent = '⚠ kaydedilemedi: ' + e.message;
+    }
+  });
+}
+
+$('pick').addEventListener('click', async () => {
+  if (!window.showDirectoryPicker) { $('folder').click(); return; }
+  try {
+    const dir = await window.showDirectoryPicker({ mode: 'readwrite' });
+    const files = [];
+    for await (const h of dir.values()) if (h.kind === 'file') files.push(await h.getFile());
+    state.dir = dir;
+    await load(files);
+  } catch (e) { if (e.name !== 'AbortError') $('folder').click(); }
+});
+
+$('folder').addEventListener('change', (ev) =>
+  load([...ev.target.files].filter((f) => f.webkitRelativePath.split('/').length === 2)));
+
+async function load(fileList) {
+  state.files.clear(); state.lib.clear();
+  let libFile = null;
+  for (const f of fileList) {
+    if (f.name === 'library.json') libFile = f;
+    else if (AUDIO_EXT.test(f.name)) state.files.set(f.name, f);
+  }
+  $('saved').textContent = state.dir ? 'Otomatik kayıt açık (library.json)' : 'Bu tarayıcı klasöre yazamıyor: bitince "library.json indir" de';
+  state.order = [...state.files.keys()].sort((a, b) => a.localeCompare(b, 'tr'));
+  if (libFile) {
+    try { for (const t of JSON.parse(await libFile.text())) state.lib.set(t.file, t); } catch (e) { alert('library.json okunamadı: ' + e.message); }
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(storeKey()) || '[]');
+    for (const t of saved) if (state.files.has(t.file) && (t.manual || t.excluded)) state.lib.set(t.file, t);
+  } catch (e) {}
+  for (const name of state.order) if (!state.lib.has(name)) state.lib.set(name, { file: name, start: 0, method: 'none' });
+  // Library entries whose file is not in the folder (e.g. skipped non-music) stay out of the list
+  $('export').disabled = false;
+  renderList(); renderStat();
+  const first = state.order.find((n) => !state.lib.get(n).manual && !state.lib.get(n).excluded) || state.order[0];
+  if (first) select(first);
+}
+
+function renderStat() {
+  const all = state.order.length;
+  const ok = state.order.filter((n) => state.lib.get(n).manual).length;
+  const ex = state.order.filter((n) => state.lib.get(n).excluded).length;
+  $('stat').textContent = all ? `${ok} onaylı · ${ex} kullanılmayacak · ${all - ok - ex} bekliyor / ${all}` : '';
+}
+
+function renderList() {
+  const q = $('q').value.toLowerCase();
+  const list = $('list');
+  list.textContent = '';
+  for (const name of state.order) {
+    if (q && !name.toLowerCase().includes(q)) continue;
+    const t = state.lib.get(name);
+    const el = document.createElement('div');
+    el.className = 'item' + (name === state.current ? ' active' : '');
+    const dot = document.createElement('span');
+    dot.className = 'dot ' + (t.excluded ? 'ex' : t.manual ? 'ok' : t.method && t.method !== 'none' ? 'auto' : '');
+    const nm = document.createElement('span'); nm.className = 'name'; nm.textContent = name;
+    const tm = document.createElement('span'); tm.className = 't'; tm.textContent = t.excluded ? '—' : fmt(t.start || 0);
+    el.append(dot, nm, tm);
+    el.onclick = () => select(name);
+    list.append(el);
+  }
+}
+$('q').addEventListener('input', renderList);
+
+async function select(name) {
+  stop();
+  state.current = name;
+  renderList();
+  $('empty').hidden = true; $('panel').hidden = false;
+  $('title').textContent = name;
+  $('meta').textContent = 'Yükleniyor…';
+  const buf = await ctx.decodeAudioData(await state.files.get(name).arrayBuffer());
+  if (state.current !== name) return;
+  state.buffer = buf;
+  computePeaks();
+  const t = state.lib.get(name);
+  t.duration = Math.round(buf.duration * 10) / 10;
+  const status = t.excluded ? 'kullanılmayacak' : t.manual ? 'onaylı (elle)' : t.method && t.method !== 'none' ? `otomatik (${t.method})` : 'başlangıç yok';
+  $('meta').textContent = `Süre ${fmt(buf.duration)} · ${status}`;
+  draw();
+}
+
+function computePeaks() {
+  const ch = state.buffer.getChannelData(0);
+  const cols = 1600;
+  const per = Math.floor(ch.length / cols);
+  const peaks = new Float32Array(cols);
+  for (let i = 0; i < cols; i++) {
+    let m = 0;
+    for (let j = i * per; j < (i + 1) * per; j += 8) m = Math.max(m, Math.abs(ch[j]));
+    peaks[i] = m;
+  }
+  state.peaks = peaks;
+  // 50 ms RMS energy for beat snapping
+  const hop = Math.floor(state.buffer.sampleRate * 0.05);
+  const n = Math.floor(ch.length / hop);
+  const e = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    let s = 0;
+    for (let j = i * hop; j < (i + 1) * hop; j += 4) s += ch[j] * ch[j];
+    e[i] = Math.sqrt(s / (hop / 4));
+  }
+  state.energy = e;
+}
+
+function draw(playhead) {
+  const cv = $('cv');
+  const r = cv.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  cv.width = r.width * dpr; cv.height = r.height * dpr;
+  const g = cv.getContext('2d');
+  g.scale(dpr, dpr);
+  const W = r.width, H = r.height, dur = state.buffer.duration;
+  const t = state.lib.get(state.current);
+  const x = (s) => (s / dur) * W;
+  g.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--win');
+  if (!t.excluded) g.fillRect(x(t.start || 0), 0, x(winLen()), H);
+  const peaks = state.peaks;
+  g.fillStyle = '#5b6aa8';
+  for (let i = 0; i < peaks.length; i++) {
+    const px = (i / peaks.length) * W;
+    const h = peaks[i] * (H - 20);
+    g.fillRect(px, H / 2 - h / 2, Math.max(1, W / peaks.length), h);
+  }
+  g.fillStyle = '#ffffff';
+  g.fillRect(x(t.start || 0) - 1, 0, 2, H);
+  g.fillStyle = '#8b93b3'; g.font = '11px system-ui';
+  for (let s = 0; s < dur; s += 30) g.fillText(fmt(s).replace('.0', ''), x(s) + 3, H - 6);
+  if (playhead !== undefined) { g.fillStyle = '#22d3a6'; g.fillRect(x(playhead) - 1, 0, 2, H); }
+  $('startLabel').textContent = t.excluded ? 'kullanılmayacak' : fmt(t.start || 0);
+}
+
+function setStart(s) {
+  const t = state.lib.get(state.current);
+  const dur = state.buffer.duration;
+  t.start = Math.round(Math.max(0, Math.min(dur - 1, s)) * 100) / 100;
+  t.excluded = false;
+  save(); renderList(); draw();
+}
+
+$('wave').addEventListener('click', (ev) => {
+  if (!state.buffer) return;
+  const r = $('wave').getBoundingClientRect();
+  setStart(((ev.clientX - r.left) / r.width) * state.buffer.duration);
+  play();
+});
+
+function snap() {
+  const e = state.energy; if (!e) return;
+  const t = state.lib.get(state.current);
+  const i0 = Math.round((t.start || 0) / 0.05);
+  let best = i0, bestRise = -Infinity;
+  for (let i = Math.max(4, i0 - 20); i < Math.min(e.length - 4, i0 + 20); i++) {
+    const rise = (e[i] + e[i + 1] + e[i + 2]) - (e[i - 1] + e[i - 2] + e[i - 3]);
+    if (rise > bestRise) { bestRise = rise; best = i; }
+  }
+  setStart(best * 0.05 - 0.05);
+}
+
+function play() {
+  stop();
+  const t = state.lib.get(state.current);
+  const src = ctx.createBufferSource();
+  const gain = ctx.createGain();
+  src.buffer = state.buffer;
+  src.connect(gain).connect(ctx.destination);
+  const now = ctx.currentTime, L = winLen();
+  gain.gain.setValueAtTime(1, now + L - 1.2);
+  gain.gain.linearRampToValueAtTime(0, now + L);
+  src.start(now, t.start || 0, L);
+  state.src = src; state.playStart = now; state.playOffset = t.start || 0;
+  $('play').textContent = '■ Durdur (Space)';
+  src.onended = () => { if (state.src === src) stop(); };
+  const tick = () => { draw(state.playOffset + (ctx.currentTime - state.playStart)); state.raf = requestAnimationFrame(tick); };
+  tick();
+}
+
+function stop() {
+  if (state.src) { try { state.src.stop(); } catch (e) {} state.src = null; }
+  cancelAnimationFrame(state.raf);
+  $('play').textContent = '▶ Dinle (Space)';
+  if (state.buffer) draw();
+}
+
+function nudge(d) { setStart((state.lib.get(state.current).start || 0) + d); }
+function nextTodo() {
+  const i = state.order.indexOf(state.current);
+  const rest = [...state.order.slice(i + 1), ...state.order.slice(0, i)];
+  const n = rest.find((name) => !state.lib.get(name).manual && !state.lib.get(name).excluded);
+  if (n) select(n); else { stop(); alert('Hepsi bitti 🎉 Şimdi "library.json indir" de.'); }
+}
+function approve() {
+  const t = state.lib.get(state.current);
+  t.manual = true; t.excluded = false; t.method = 'manual';
+  save(); nextTodo();
+}
+function exclude() {
+  const t = state.lib.get(state.current);
+  t.excluded = true; t.manual = false;
+  save(); nextTodo();
+}
+
+$('play').onclick = () => (state.src ? stop() : play());
+$('back').onclick = () => nudge(-1); $('fwd').onclick = () => nudge(1);
+$('back01').onclick = () => nudge(-0.1); $('fwd01').onclick = () => nudge(0.1);
+$('snap').onclick = () => { snap(); play(); };
+$('approve').onclick = approve; $('exclude').onclick = exclude; $('nextTodo').onclick = nextTodo;
+$('win').addEventListener('change', () => state.buffer && draw());
+window.addEventListener('resize', () => state.buffer && draw());
+
+document.addEventListener('keydown', (ev) => {
+  if (!state.buffer || ev.target.tagName === 'INPUT') return;
+  const k = ev.key;
+  if (k === ' ') { ev.preventDefault(); state.src ? stop() : play(); }
+  else if (k === 'ArrowLeft') { ev.preventDefault(); nudge(ev.shiftKey ? -1 : -0.1); play(); }
+  else if (k === 'ArrowRight') { ev.preventDefault(); nudge(ev.shiftKey ? 1 : 0.1); play(); }
+  else if (k === 'Enter') { ev.preventDefault(); approve(); }
+  else if (k === 'd' || k === 'D') { snap(); play(); }
+  else if (k === 'x' || k === 'X') exclude();
+  else if (k === 'n' || k === 'N') nextTodo();
+});
+
+$('export').onclick = () => {
+  const blob = new Blob([libraryJson()], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'library.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+</script>
+</body>
+</html>
