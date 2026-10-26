@@ -1,0 +1,103 @@
+{
+  "youtube": {
+    "title": "Galatasaray vs Fenerbahçe Süper Lig Titles 🦁🐤",
+    "description": "Galatasaray vs Fenerbahçe — Süper Lig Titles\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "galatasaray",
+      "fenerbahce",
+      "super lig",
+      "turkish football",
+      "derbi",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "diamond",
+    "title": "Galatasaray vs Fenerbahçe",
+    "subtitle": "Süper Lig Titles",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1950s",
+        "values": {
+          "gs": 0,
+          "fb": 1
+        }
+      },
+      {
+        "label": "1960s",
+        "values": {
+          "gs": 3,
+          "fb": 4
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "gs": 3,
+          "fb": 4
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "gs": 2,
+          "fb": 3
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "gs": 5,
+          "fb": 1
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "gs": 4,
+          "fb": 4
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "gs": 5,
+          "fb": 2
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "gs": 3,
+          "fb": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "gs",
+      "name": "Galatasaray",
+      "color": "#a90432",
+      "team": "Galatasaray",
+      "country": "tr"
+    },
+    {
+      "id": "fb",
+      "name": "Fenerbahçe",
+      "color": "#002d72",
+      "team": "Fenerbahce",
+      "country": "tr"
+    }
+  ],
+  "category": "Futbol"
+}

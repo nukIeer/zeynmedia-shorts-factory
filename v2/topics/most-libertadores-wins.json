@@ -1,0 +1,128 @@
+{
+  "youtube": {
+    "title": "MOST COPA LIBERTADORES WINS! 🏆🔥",
+    "description": "Copa Libertadores — Most Titles\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "copa libertadores",
+      "boca juniors",
+      "independiente",
+      "river plate",
+      "penarol",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "grid",
+    "title": "Copa Libertadores",
+    "subtitle": "Most Titles",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1960s",
+        "values": {
+          "ind": 2,
+          "boc": 0,
+          "pen": 3,
+          "est": 2,
+          "riv": 0
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "ind": 4,
+          "boc": 2,
+          "pen": 0,
+          "est": 1,
+          "riv": 0
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "ind": 1,
+          "boc": 0,
+          "pen": 2,
+          "est": 0,
+          "riv": 1
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "ind": 0,
+          "boc": 0,
+          "pen": 0,
+          "est": 0,
+          "riv": 1
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "ind": 0,
+          "boc": 4,
+          "pen": 0,
+          "est": 1,
+          "riv": 0
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "ind": 0,
+          "boc": 0,
+          "pen": 0,
+          "est": 0,
+          "riv": 2
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "ind",
+      "name": "Independiente",
+      "color": "#ffffff",
+      "team": "CA Independiente",
+      "country": "ar"
+    },
+    {
+      "id": "boc",
+      "name": "Boca",
+      "color": "#ffffff",
+      "team": "Boca Juniors",
+      "country": "ar"
+    },
+    {
+      "id": "pen",
+      "name": "Peñarol",
+      "color": "#ffffff",
+      "team": "Penarol",
+      "country": "uy"
+    },
+    {
+      "id": "est",
+      "name": "Estudiantes",
+      "color": "#ffffff",
+      "team": "Estudiantes",
+      "country": "ar"
+    },
+    {
+      "id": "riv",
+      "name": "River",
+      "color": "#ffffff",
+      "team": "River Plate",
+      "country": "ar"
+    }
+  ],
+  "category": "Futbol"
+}

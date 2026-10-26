@@ -1,0 +1,130 @@
+{
+  "youtube": {
+    "title": "MOST EUROPA LEAGUE WINS! 🏆😱",
+    "description": "Europa League — Most Titles\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "europa league",
+      "uefa cup",
+      "sevilla",
+      "inter",
+      "liverpool",
+      "juventus",
+      "atletico",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "box",
+    "title": "Europa League",
+    "subtitle": "Most Titles",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1970s",
+        "values": {
+          "sev": 0,
+          "int": 0,
+          "liv": 2,
+          "juv": 1,
+          "atm": 0
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "sev": 0,
+          "int": 0,
+          "liv": 0,
+          "juv": 0,
+          "atm": 0
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "sev": 0,
+          "int": 3,
+          "liv": 0,
+          "juv": 2,
+          "atm": 0
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "sev": 2,
+          "int": 0,
+          "liv": 1,
+          "juv": 0,
+          "atm": 0
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "sev": 3,
+          "int": 0,
+          "liv": 0,
+          "juv": 0,
+          "atm": 3
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "sev": 2,
+          "int": 0,
+          "liv": 0,
+          "juv": 0,
+          "atm": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "sev",
+      "name": "Sevilla",
+      "color": "#ffffff",
+      "team": "Sevilla",
+      "country": "es"
+    },
+    {
+      "id": "int",
+      "name": "Inter",
+      "color": "#ffffff",
+      "team": "Inter Milan",
+      "country": "it"
+    },
+    {
+      "id": "liv",
+      "name": "Liverpool",
+      "color": "#ffffff",
+      "team": "Liverpool",
+      "country": "gb-eng"
+    },
+    {
+      "id": "juv",
+      "name": "Juventus",
+      "color": "#ffffff",
+      "team": "Juventus",
+      "country": "it"
+    },
+    {
+      "id": "atm",
+      "name": "Atlético",
+      "color": "#ffffff",
+      "team": "Atletico Madrid",
+      "country": "es"
+    }
+  ],
+  "category": "Futbol"
+}

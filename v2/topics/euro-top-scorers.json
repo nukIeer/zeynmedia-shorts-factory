@@ -1,0 +1,179 @@
+{
+  "youtube": {
+    "title": "Most EURO Goals Ever 😱⚽️",
+    "description": "EURO — All-Time Top Scorers\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "euro",
+      "cristiano ronaldo",
+      "platini",
+      "griezmann",
+      "kane",
+      "shearer",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "navy",
+    "title": "EURO",
+    "subtitle": "All-Time Top Scorers",
+    "stepIcon": "ball",
+    "steps": [
+      {
+        "label": "1984",
+        "values": {
+          "ron": 0,
+          "pla": 9,
+          "gri": 0,
+          "she": 0,
+          "kan": 0
+        }
+      },
+      {
+        "label": "1988",
+        "values": {
+          "ron": 0,
+          "pla": 0,
+          "gri": 0,
+          "she": 0,
+          "kan": 0
+        }
+      },
+      {
+        "label": "1992",
+        "values": {
+          "ron": 0,
+          "pla": 0,
+          "gri": 0,
+          "she": 0,
+          "kan": 0
+        }
+      },
+      {
+        "label": "1996",
+        "values": {
+          "ron": 0,
+          "pla": 0,
+          "gri": 0,
+          "she": 5,
+          "kan": 0
+        }
+      },
+      {
+        "label": "2000",
+        "values": {
+          "ron": 0,
+          "pla": 0,
+          "gri": 0,
+          "she": 2,
+          "kan": 0
+        }
+      },
+      {
+        "label": "2004",
+        "values": {
+          "ron": 2,
+          "pla": 0,
+          "gri": 0,
+          "she": 0,
+          "kan": 0
+        }
+      },
+      {
+        "label": "2008",
+        "values": {
+          "ron": 1,
+          "pla": 0,
+          "gri": 0,
+          "she": 0,
+          "kan": 0
+        }
+      },
+      {
+        "label": "2012",
+        "values": {
+          "ron": 3,
+          "pla": 0,
+          "gri": 0,
+          "she": 0,
+          "kan": 0
+        }
+      },
+      {
+        "label": "2016",
+        "values": {
+          "ron": 3,
+          "pla": 0,
+          "gri": 6,
+          "she": 0,
+          "kan": 0
+        }
+      },
+      {
+        "label": "2021",
+        "values": {
+          "ron": 5,
+          "pla": 0,
+          "gri": 1,
+          "she": 0,
+          "kan": 4
+        }
+      },
+      {
+        "label": "2024",
+        "values": {
+          "ron": 0,
+          "pla": 0,
+          "gri": 0,
+          "she": 0,
+          "kan": 3
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "ron",
+      "name": "Ronaldo",
+      "color": "#dc2626",
+      "player": "Cristiano Ronaldo",
+      "country": "pt"
+    },
+    {
+      "id": "pla",
+      "name": "Platini",
+      "color": "#1d4ed8",
+      "player": "Michel Platini",
+      "country": "fr"
+    },
+    {
+      "id": "gri",
+      "name": "Griezmann",
+      "color": "#3b82f6",
+      "player": "Antoine Griezmann",
+      "country": "fr"
+    },
+    {
+      "id": "she",
+      "name": "Shearer",
+      "color": "#e5e7eb",
+      "player": "Alan Shearer",
+      "country": "gb-eng"
+    },
+    {
+      "id": "kan",
+      "name": "Kane",
+      "color": "#f8fafc",
+      "player": "Harry Kane",
+      "country": "gb-eng"
+    }
+  ],
+  "category": "Futbol"
+}

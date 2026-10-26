@@ -1,0 +1,153 @@
+{
+  "youtube": {
+    "title": "Most F1 Constructors' Titles 🏎️🏆",
+    "description": "F1 Constructors — World Championships\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "f1",
+      "ferrari",
+      "mclaren",
+      "mercedes",
+      "red bull",
+      "williams",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "grid",
+    "title": "F1 Constructors",
+    "subtitle": "World Championships",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1960s",
+        "values": {
+          "fer": 2,
+          "wil": 0,
+          "mcl": 0,
+          "mer": 0,
+          "lot": 3,
+          "rbr": 0
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "fer": 4,
+          "wil": 0,
+          "mcl": 1,
+          "mer": 0,
+          "lot": 4,
+          "rbr": 0
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "fer": 2,
+          "wil": 4,
+          "mcl": 4,
+          "mer": 0,
+          "lot": 0,
+          "rbr": 0
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "fer": 1,
+          "wil": 5,
+          "mcl": 3,
+          "mer": 0,
+          "lot": 0,
+          "rbr": 0
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "fer": 7,
+          "wil": 0,
+          "mcl": 0,
+          "mer": 0,
+          "lot": 0,
+          "rbr": 0
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "fer": 0,
+          "wil": 0,
+          "mcl": 0,
+          "mer": 6,
+          "lot": 0,
+          "rbr": 4
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "fer": 0,
+          "wil": 0,
+          "mcl": 1,
+          "mer": 2,
+          "lot": 0,
+          "rbr": 2
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "fer",
+      "name": "Ferrari",
+      "color": "#ffffff",
+      "team": "Ferrari",
+      "country": "it"
+    },
+    {
+      "id": "wil",
+      "name": "Williams",
+      "color": "#ffffff",
+      "team": "Williams",
+      "country": "gb"
+    },
+    {
+      "id": "mcl",
+      "name": "McLaren",
+      "color": "#ffffff",
+      "team": "McLaren",
+      "country": "gb"
+    },
+    {
+      "id": "mer",
+      "name": "Mercedes",
+      "color": "#ffffff",
+      "team": "Mercedes",
+      "country": "de"
+    },
+    {
+      "id": "lot",
+      "name": "Lotus",
+      "color": "#ffffff",
+      "team": "Team Lotus",
+      "country": "gb"
+    },
+    {
+      "id": "rbr",
+      "name": "Red Bull",
+      "color": "#ffffff",
+      "team": "Red Bull Racing",
+      "country": "at"
+    }
+  ],
+  "category": "Motor Sporları"
+}

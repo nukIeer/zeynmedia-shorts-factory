@@ -1,0 +1,287 @@
+{
+  "youtube": {
+    "title": "Most World Cup Goals Ever 😱⚽️",
+    "description": "World Cup — All-Time Top Scorers\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "world cup",
+      "klose",
+      "ronaldo",
+      "messi",
+      "mbappe",
+      "pele",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "navy",
+    "title": "World Cup",
+    "subtitle": "All-Time Top Scorers",
+    "stepIcon": "ball",
+    "steps": [
+      {
+        "label": "1958",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 13,
+          "pel": 6,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1962",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 1,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1966",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 1,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1970",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 10,
+          "mes": 0,
+          "fon": 0,
+          "pel": 4,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1974",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 4,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1978",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1982",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1986",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1990",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1994",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "1998",
+        "values": {
+          "klo": 0,
+          "r9": 4,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "2002",
+        "values": {
+          "klo": 5,
+          "r9": 8,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "2006",
+        "values": {
+          "klo": 5,
+          "r9": 3,
+          "gmu": 0,
+          "mes": 1,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "2010",
+        "values": {
+          "klo": 4,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 0,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "2014",
+        "values": {
+          "klo": 2,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 4,
+          "fon": 0,
+          "pel": 0,
+          "mba": 0
+        }
+      },
+      {
+        "label": "2018",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 1,
+          "fon": 0,
+          "pel": 0,
+          "mba": 4
+        }
+      },
+      {
+        "label": "2022",
+        "values": {
+          "klo": 0,
+          "r9": 0,
+          "gmu": 0,
+          "mes": 7,
+          "fon": 0,
+          "pel": 0,
+          "mba": 8
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "klo",
+      "name": "Klose",
+      "color": "#e5e7eb",
+      "player": "Miroslav Klose",
+      "country": "de"
+    },
+    {
+      "id": "r9",
+      "name": "Ronaldo",
+      "color": "#facc15",
+      "player": "Ronaldo Nazario",
+      "country": "br"
+    },
+    {
+      "id": "gmu",
+      "name": "G. Müller",
+      "color": "#9ca3af",
+      "player": "Gerd Muller",
+      "country": "de"
+    },
+    {
+      "id": "mes",
+      "name": "Messi",
+      "color": "#60a5fa",
+      "player": "Lionel Messi",
+      "country": "ar"
+    },
+    {
+      "id": "fon",
+      "name": "Fontaine",
+      "color": "#1d4ed8",
+      "player": "Just Fontaine",
+      "country": "fr"
+    },
+    {
+      "id": "pel",
+      "name": "Pelé",
+      "color": "#16a34a",
+      "player": "Pele",
+      "country": "br"
+    },
+    {
+      "id": "mba",
+      "name": "Mbappé",
+      "color": "#2563eb",
+      "player": "Kylian Mbappe",
+      "country": "fr"
+    }
+  ],
+  "category": "Futbol"
+}

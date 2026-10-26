@@ -1,0 +1,140 @@
+{
+  "youtube": {
+    "title": "Most NBA MVP Awards Ever 🏀👑",
+    "description": "Most NBA MVPs — Regular Season MVP\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "nba",
+      "mvp",
+      "kareem",
+      "jordan",
+      "lebron",
+      "bill russell",
+      "wilt chamberlain",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "box",
+    "title": "Most NBA MVPs",
+    "subtitle": "Regular Season MVP",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1950s",
+        "values": {
+          "kar": 0,
+          "mj": 0,
+          "rus": 1,
+          "wil": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1960s",
+        "values": {
+          "kar": 0,
+          "mj": 0,
+          "rus": 4,
+          "wil": 4,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "kar": 5,
+          "mj": 0,
+          "rus": 0,
+          "wil": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "kar": 1,
+          "mj": 1,
+          "rus": 0,
+          "wil": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "kar": 0,
+          "mj": 4,
+          "rus": 0,
+          "wil": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "kar": 0,
+          "mj": 0,
+          "rus": 0,
+          "wil": 0,
+          "lbj": 1
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "kar": 0,
+          "mj": 0,
+          "rus": 0,
+          "wil": 0,
+          "lbj": 3
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "kar",
+      "name": "Kareem",
+      "color": "#ffffff",
+      "player": "Kareem Abdul-Jabbar",
+      "country": "us"
+    },
+    {
+      "id": "mj",
+      "name": "Jordan",
+      "color": "#ffffff",
+      "player": "Michael Jordan",
+      "country": "us"
+    },
+    {
+      "id": "rus",
+      "name": "Russell",
+      "color": "#ffffff",
+      "player": "Bill Russell",
+      "country": "us"
+    },
+    {
+      "id": "wil",
+      "name": "Chamberlain",
+      "color": "#ffffff",
+      "player": "Wilt Chamberlain",
+      "country": "us"
+    },
+    {
+      "id": "lbj",
+      "name": "LeBron",
+      "color": "#ffffff",
+      "player": "LeBron James",
+      "country": "us"
+    }
+  ],
+  "category": "Basketbol"
+}
