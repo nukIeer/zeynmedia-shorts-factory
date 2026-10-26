@@ -59,6 +59,8 @@
     const { useState, useEffect, useRef, useMemo } = React;
     // Headless render mode: the factory injects window.__RENDER_CONFIG__ and steps frames via window.__seek
     const RENDER_MODE = !!window.__RENDER_CONFIG__;
+    // Titles are English in production; lang="tr" would uppercase i as İ (PREMİER)
+    if (RENDER_MODE) document.documentElement.lang = 'en';
 
     const App = () => {
       // Varsayılan 4 Oyuncu
