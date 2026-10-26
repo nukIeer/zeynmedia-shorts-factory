@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Axis} from './components/Axis';
 import {Background} from './components/Background';
-import {Columns, FLY_STEPS, HOLD_STEPS} from './components/Columns';
+import {Columns} from './components/Columns';
 import {Confetti, Crown, Flash, Sparks, type Burst} from './components/Effects';
 import {Header} from './components/Header';
 import {Row} from './components/Row';
@@ -14,6 +14,7 @@ import {
 	buildEvents,
 	easeOutCubic,
 	getTiming,
+	landSteps,
 	leaderAtEnd,
 	progressAt,
 	smoothRanksAt,
@@ -24,7 +25,6 @@ import type {ShortProps} from './schema';
 import {themes} from './theme/themes';
 
 const FLASH_S = 0.32;
-const FLY_S_STEPS = HOLD_STEPS + FLY_STEPS;
 
 export const Short: React.FC<ShortProps> = (p) => {
 	const frame = useCurrentFrame();
@@ -34,6 +34,7 @@ export const Short: React.FC<ShortProps> = (p) => {
 	const layout = layoutFor(p.template, p.entities.length);
 	const tm = getTiming(p);
 	const flies = theme.delta !== 'none' && theme.delta !== 'grid';
+	const FLY_S_STEPS = landSteps(p);
 	const events = useMemo(() => buildEvents(p, fps, flies ? FLY_S_STEPS * tm.stepDur : 0), [p, fps, flies, tm.stepDur]);
 	const leader = useMemo(() => leaderAtEnd(p), [p]);
 

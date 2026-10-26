@@ -15,11 +15,6 @@ on:
         type: choice
         options: [public, unlisted, private]
         default: public
-      engine:
-        description: "Video motoru (boş = repo değişkeni ENGINE, o da yoksa v2)"
-        type: choice
-        options: ["", v2, studio]
-        default: ""
       skip_upload:
         description: "Sadece video üret, YouTube'a yükleme"
         type: boolean
@@ -60,7 +55,7 @@ jobs:
       GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
       CONTENT_LANG: ${{ vars.CONTENT_LANG || 'en' }}
       MUSIC_DIR: music-repo
-      ENGINE: ${{ inputs.engine || vars.ENGINE || 'v2' }}
+      ENGINE: v2
       INPUT_TOPIC: ${{ inputs.topic }}
       YT_PRIVACY: ${{ inputs.privacy || vars.YT_PRIVACY || 'public' }}
       SKIP_UPLOAD: ${{ inputs.skip_upload || secrets.YT_REFRESH_TOKEN == '' }}

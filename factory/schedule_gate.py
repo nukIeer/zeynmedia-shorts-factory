@@ -12,7 +12,8 @@ FIRST_HOUR, LAST_HOUR, MIN_GAP = 9, 22, 3
 
 
 def todays_hours(day):
-    rng = random.Random(f"{day.isoformat()}-{os.environ.get('GITHUB_REPOSITORY', '')}")
+    line = os.environ.get("HISTORY_FILE", "")  # a second production line gets its own hours
+    rng = random.Random(f"{day.isoformat()}-{os.environ.get('GITHUB_REPOSITORY', '')}{line}")
     n = rng.choice([2, 3])
     while True:
         hours = sorted(rng.sample(range(FIRST_HOUR, LAST_HOUR + 1), n))
@@ -22,12 +23,13 @@ def todays_hours(day):
 
 def uploads_on(day):
     try:
-        history = json.loads((ROOT / "data" / "history.json").read_text(encoding="utf-8"))
+        history = json.loads((ROOT / os.environ.get("HISTORY_FILE", "data/history.json")).read_text(encoding="utf-8"))
     except (FileNotFoundError, json.JSONDecodeError):
         return 0
     count = 0
     for h in history:
-        if not h.get("video_id"):
+        # Scheduled runs count even without an upload (a line with no channel yet only publishes Releases)
+        if not (h.get("video_id") or h.get("scheduled")):
             continue
         ts = datetime.strptime(h["date"], "%Y%m%d-%H%M%S").replace(tzinfo=timezone.utc).astimezone(TR)
         count += ts.date() == day

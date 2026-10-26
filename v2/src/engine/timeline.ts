@@ -4,6 +4,10 @@ export const INTRO_S = 0.6;
 export const OUTRO_S = 2.4;
 const COUNT_UP_STEPS = 0.4;
 const RANK_SMOOTH_S = 0.38;
+// +N bubbles (navy/box/diamond) pop on the line, hold, then fly into the box; totals count up on landing
+export const HOLD_STEPS = 0.22;
+export const FLY_STEPS = 0.3;
+export const landSteps = (p: ShortProps) => (p.template === 'navy' || p.template === 'box' || p.template === 'diamond' ? HOLD_STEPS + FLY_STEPS : 0);
 
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x));
 export const easeOutCubic = (x: number) => 1 - Math.pow(1 - clamp01(x), 3);
@@ -18,6 +22,7 @@ export type Timing = {
 	animEnd: number;
 	stepDur: number;
 	steps: number;
+	land: number;
 };
 
 export const getTiming = (p: ShortProps): Timing => {
@@ -25,22 +30,24 @@ export const getTiming = (p: ShortProps): Timing => {
 	const animStart = INTRO_S;
 	const animEnd = duration - OUTRO_S;
 	const steps = p.steps.length;
-	// Half a step of headroom so the last column is absorbed and counted up before the finale
-	return {duration, animStart, animEnd, steps, stepDur: (animEnd - animStart) / (steps + 0.5)};
+	const land = landSteps(p);
+	// Half a step of headroom (plus the bubble flight) so the last column is counted up before the finale
+	return {duration, animStart, animEnd, steps, land, stepDur: (animEnd - animStart) / (steps + 0.5 + land)};
 };
 
 /** Continuous step progress: column k reaches the absorb line at s = k + 1. */
 export const progressAt = (t: number, tm: Timing) =>
-	Math.min(tm.steps + 0.5, Math.max(0, (t - tm.animStart) / tm.stepDur));
+	Math.min(tm.steps + 0.5 + tm.land, Math.max(0, (t - tm.animStart) / tm.stepDur));
 
 export const absorbTime = (k: number, tm: Timing) => tm.animStart + (k + 1) * tm.stepDur;
 
 export const valuesAt = (p: ShortProps, s: number): Record<string, number> => {
 	const out: Record<string, number> = {};
+	const land = landSteps(p);
 	for (const e of p.entities) {
 		let v = 0;
 		p.steps.forEach((step, k) => {
-			v += (step.values[e.id] ?? 0) * easeOutCubic((s - (k + 1)) / COUNT_UP_STEPS);
+			v += (step.values[e.id] ?? 0) * easeOutCubic((s - land - (k + 1)) / COUNT_UP_STEPS);
 		});
 		out[e.id] = v;
 	}
@@ -95,7 +102,7 @@ export const buildEvents = (p: ShortProps, fps: number, popDelay = 0): SfxEvent[
 		if (gained) ev.push({t: t + popDelay, kind: 'pop'});
 	});
 	let prev = ranksFor(p, valuesAt(p, 0));
-	for (let f = 1; f < tm.animEnd * fps + COUNT_UP_STEPS * tm.stepDur * fps; f++) {
+	for (let f = 1; f < tm.animEnd * fps; f++) {
 		const t = f / fps;
 		const r = ranksFor(p, valuesAt(p, progressAt(t, tm)));
 		for (const id in r) {
@@ -112,6 +119,6 @@ export const buildEvents = (p: ShortProps, fps: number, popDelay = 0): SfxEvent[
 };
 
 export const leaderAtEnd = (p: ShortProps) => {
-	const r = ranksFor(p, valuesAt(p, p.steps.length + 1));
+	const r = ranksFor(p, valuesAt(p, p.steps.length + 2));
 	return Object.keys(r).find((id) => r[id] === 0)!;
 };

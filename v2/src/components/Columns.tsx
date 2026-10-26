@@ -1,14 +1,12 @@
 import React from 'react';
 import {CHART_BOTTOM, CHART_TOP, type Layout} from '../engine/layout';
-import {easeInOutCubic} from '../engine/timeline';
+import {easeInOutCubic, FLY_STEPS, HOLD_STEPS} from '../engine/timeline';
 import {fonts} from '../fonts';
 import type {ShortProps} from '../schema';
 import type {Theme} from '../theme/themes';
 import {BallIcon, TrophyIcon} from './Icons';
 
-// Bubble pops and holds on the line so the +N is readable, then flies into the box
-export const HOLD_STEPS = 0.22;
-export const FLY_STEPS = 0.3;
+
 
 const StepPill: React.FC<{label: string; icon: ShortProps['stepIcon']; dark: boolean}> = ({label, icon, dark}) => (
 	<div

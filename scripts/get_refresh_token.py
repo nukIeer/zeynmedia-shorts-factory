@@ -2,7 +2,8 @@
 
 Kullanım:
   pip install google-auth-oauthlib
-  python scripts/get_refresh_token.py client_secret.json [--set-secrets owner/repo]
+  python scripts/get_refresh_token.py client_secret.json [--set-secrets owner/repo] [--prefix ZEYNEL_]
+  --prefix ZEYNEL_ connects a second channel (Zeynel's studio line) without touching the main one
 
 Web tipi OAuth client kullanıyorsan Google Cloud'da Authorized redirect URI olarak
 http://localhost:8080/ ekli olmalı. Desktop tipi client'ta gerek yok.
@@ -17,6 +18,7 @@ SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 ap = argparse.ArgumentParser()
 ap.add_argument("client_secret")
 ap.add_argument("--set-secrets", metavar="OWNER/REPO", help="Değerleri gh CLI ile doğrudan repo secret'larına yaz")
+ap.add_argument("--prefix", default="", help="Secret adlarının önüne eklenir, örn. ZEYNEL_ (ikinci kanal için)")
 args = ap.parse_args()
 
 flow = InstalledAppFlow.from_client_secrets_file(args.client_secret, SCOPES)
@@ -25,9 +27,9 @@ if not creds.refresh_token:
     raise SystemExit("Refresh token gelmedi; Google hesabındaki uygulama erişimini kaldırıp tekrar dene.")
 
 values = {
-    "YT_CLIENT_ID": creds.client_id,
-    "YT_CLIENT_SECRET": creds.client_secret,
-    "YT_REFRESH_TOKEN": creds.refresh_token,
+    f"{args.prefix}YT_CLIENT_ID": creds.client_id,
+    f"{args.prefix}YT_CLIENT_SECRET": creds.client_secret,
+    f"{args.prefix}YT_REFRESH_TOKEN": creds.refresh_token,
 }
 
 if args.set_secrets:
