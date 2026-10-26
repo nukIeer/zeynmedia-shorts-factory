@@ -1,6 +1,5 @@
 import React from 'react';
 import {CHART_BOTTOM, CHART_TOP, type Layout} from '../engine/layout';
-import {easeInOutCubic, FLY_STEPS, HOLD_STEPS} from '../engine/timeline';
 import {fonts} from '../fonts';
 import type {ShortProps} from '../schema';
 import type {Theme} from '../theme/themes';
@@ -79,20 +78,20 @@ export const Columns: React.FC<{
 	layout: Layout;
 	s: number;
 	rowY: Record<string, number>;
-	boxRight: Record<string, number>;
 	t: number;
-}> = ({p, theme, layout, s, rowY, boxRight, t}) => {
+}> = ({p, theme, layout, s, rowY, t}) => {
 	const grid = theme.delta === 'grid';
 	const pillTop = CHART_TOP - 98;
 	return (
 		<div style={{position: 'absolute', inset: 0}}>
 			{p.steps.map((step, k) => {
 				const x = layout.absorbX + (k + 1 - s) * theme.columnSpacing;
-				const past = s - (k + 1);
-				if (x > 1240 || x < layout.axisX - 40) return null;
+				if (x > 1240) return null;
+				// Like Zeynel's studio: the column (with its +N bubbles) slides in and softly fades out as it reaches the absorb line
+				const dist = x - layout.absorbX;
 				const enterFade = Math.min(1, (1200 - x) / 140);
-				const fade = past > 0 ? Math.max(0, 1 - past / (grid ? 0.6 : 0.3)) : 1;
-				const op = Math.max(0, Math.min(enterFade, fade));
+				const raw = Math.max(0, Math.min(1, (dist - 6) / 110));
+				const op = Math.min(enterFade, raw * raw * (3 - 2 * raw));
 				if (op <= 0) return null;
 				const lineColor = theme.delta === 'navy' ? 'rgba(12,22,90,0.85)' : theme.deltaTrack;
 				const label = `${step.label}${p.stepSuffix}`;
@@ -128,23 +127,9 @@ export const Columns: React.FC<{
 											</div>
 										);
 									}
-									let dx = x;
-									let dy = y;
-									let scale = 1;
-									let o = 1;
-									if (past > 0 && past <= HOLD_STEPS) {
-										scale = 1 + 0.3 * Math.sin((past / HOLD_STEPS) * Math.PI);
-									} else if (past > HOLD_STEPS) {
-										const a = easeInOutCubic((past - HOLD_STEPS) / FLY_STEPS);
-										dx = x + (boxRight[e.id] - 60 - x) * a;
-										scale = 1 - 0.6 * a;
-										o = past > HOLD_STEPS + FLY_STEPS ? 0 : 1;
-										dy = y - Math.sin(a * Math.PI) * 60;
-									}
-									if (o <= 0) return null;
 									const pulse = 0.5 + 0.5 * Math.sin(t * 8 + k);
 									return (
-										<div key={e.id} style={{position: 'absolute', left: dx - size / 2, top: dy - size / 2, transform: `scale(${scale})`, opacity: o}}>
+										<div key={e.id} style={{position: 'absolute', left: x - size / 2, top: y - size / 2}}>
 											<Delta kind={theme.delta} value={v} size={size} pulse={pulse} />
 										</div>
 									);

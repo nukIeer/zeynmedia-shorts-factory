@@ -66,7 +66,7 @@ export const themes: Record<TemplateId, Theme> = {
 		deltaTrack: '#3df04a',
 		flags: 'left',
 		lAxis: false,
-		columnSpacing: 640,
+		columnSpacing: 440,
 		zoomScale: false,
 	},
 	// Most Trophies Won / Instagram followers
@@ -89,7 +89,7 @@ export const themes: Record<TemplateId, Theme> = {
 		deltaTrack: 'rgba(15,28,99,0.9)',
 		flags: 'left',
 		lAxis: false,
-		columnSpacing: 640,
+		columnSpacing: 440,
 		zoomScale: false,
 	},
 	// Buffon vs Casillas — Most Clean Sheets
@@ -112,7 +112,7 @@ export const themes: Record<TemplateId, Theme> = {
 		deltaTrack: '#3df04a',
 		flags: 'badge',
 		lAxis: true,
-		columnSpacing: 640,
+		columnSpacing: 440,
 		zoomScale: false,
 	},
 	// Champions League — All Winners

@@ -21,7 +21,8 @@ export type Layout = {
 };
 
 const AXIS_X: Record<TemplateId, number> = {bar: 108, navy: 196, box: 214, diamond: 232, grid: 250};
-const ABSORB_X: Record<TemplateId, number> = {bar: 560, navy: 920, box: 940, diamond: 960, grid: 920};
+// Columns travel the whole chart and are absorbed at the axis, like the L-line in Zeynel's studio
+const ABSORB_OFFSET = 14;
 const SCALE_END: Record<TemplateId, number> = {bar: 880, navy: 760, box: 800, diamond: 810, grid: 780};
 
 export const layoutFor = (template: TemplateId, rows: number): Layout => {
@@ -38,7 +39,7 @@ export const layoutFor = (template: TemplateId, rows: number): Layout => {
 		boxH,
 		minBoxW: template === 'bar' ? 150 : boxH * 1.05,
 		portrait: template === 'grid' ? pitch * 0.92 : Math.min(delta ? 210 : 240, pitch * 0.86),
-		absorbX: ABSORB_X[template],
+		absorbX: AXIS_X[template] + ABSORB_OFFSET,
 		deltaSize: Math.min(124, pitch * 0.5),
 		scaleEnd: SCALE_END[template],
 	};

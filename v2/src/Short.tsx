@@ -14,7 +14,6 @@ import {
 	buildEvents,
 	easeOutCubic,
 	getTiming,
-	landSteps,
 	leaderAtEnd,
 	progressAt,
 	smoothRanksAt,
@@ -33,9 +32,7 @@ export const Short: React.FC<ShortProps> = (p) => {
 	const theme = themes[p.template];
 	const layout = layoutFor(p.template, p.entities.length);
 	const tm = getTiming(p);
-	const flies = theme.delta !== 'none' && theme.delta !== 'grid';
-	const FLY_S_STEPS = landSteps(p);
-	const events = useMemo(() => buildEvents(p, fps, flies ? FLY_S_STEPS * tm.stepDur : 0), [p, fps, flies, tm.stepDur]);
+	const events = useMemo(() => buildEvents(p, fps), [p, fps]);
 	const leader = useMemo(() => leaderAtEnd(p), [p]);
 
 	const s = progressAt(t, tm);
@@ -53,11 +50,11 @@ export const Short: React.FC<ShortProps> = (p) => {
 		boxRight[e.id] = layout.axisX + 3 + boxW[e.id];
 	}
 
-	// Gain moments per entity: the bubble lands FLY_S_STEPS after the column reaches the absorb line
+	// Gain moments per entity: the column reaches the absorb line and the total starts counting up
 	const gains = p.steps.flatMap((step, k) =>
 		p.entities
 			.filter((e) => (step.values[e.id] ?? 0) > 0 && !e.others)
-			.map((e) => ({id: e.id, t: absorbTime(k, tm) + (flies ? FLY_S_STEPS * tm.stepDur : 0)})),
+			.map((e) => ({id: e.id, t: absorbTime(k, tm)})),
 	);
 	const bursts: Burst[] = gains.map((g, i) => ({t: g.t, x: boxRight[g.id] - 40, y: rowY[g.id], seed: `${g.id}-${i}`}));
 	const overtakes = events.filter((e) => e.kind === 'whoosh');
@@ -79,7 +76,8 @@ export const Short: React.FC<ShortProps> = (p) => {
 				<Background theme={theme} brand={p.brand} />
 				<Header title={p.title} subtitle={p.subtitle} theme={theme} />
 				<Axis layout={layout} domain={domain} theme={theme} format={p.valueFormat} opacity={easeOutCubic(t / 0.5)} />
-				<Columns p={p} theme={theme} layout={layout} s={s} rowY={rowY} boxRight={boxRight} t={t} />
+				{/* Columns slide under the rows and fade at the axis, like the original studio */}
+				<Columns p={p} theme={theme} layout={layout} s={s} rowY={rowY} t={t} />
 				{[...p.entities]
 					.map((e, i) => ({e, i}))
 					.sort((a, b) => slots[b.e.id] - slots[a.e.id])
