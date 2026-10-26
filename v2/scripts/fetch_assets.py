@@ -101,9 +101,9 @@ def resolve(kind, query, index):
     return rel
 
 
-def build(spec_path, index):
-    spec = json.loads(Path(spec_path).read_text(encoding="utf-8"))
-    props = spec["props"]
+def build_props(spec, index):
+    """Spec dict -> Remotion props with local asset paths (downloads anything missing)."""
+    props = dict(spec["props"])
     entities = []
     for e in spec["entities"]:
         out = {k: e[k] for k in ("id", "name", "color", "others") if k in e}
@@ -115,19 +115,32 @@ def build(spec_path, index):
             out["flag"] = resolve("flag", e["country"], index)
         entities.append({k: v for k, v in out.items() if v is not None})
     props["entities"] = entities
+    return props
+
+
+def load_index():
+    return json.loads(INDEX.read_text(encoding="utf-8")) if INDEX.exists() else {}
+
+
+def save_index(index):
+    INDEX.parent.mkdir(parents=True, exist_ok=True)
+    INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def build(spec_path, index):
+    props = build_props(json.loads(Path(spec_path).read_text(encoding="utf-8")), index)
     out_path = Path(spec_path).parent.parent / Path(spec_path).name
     out_path.write_text(json.dumps(props, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"= {out_path}")
 
 
 def main():
-    index = json.loads(INDEX.read_text(encoding="utf-8")) if INDEX.exists() else {}
+    index = load_index()
     try:
         for spec in sys.argv[1:]:
             build(spec, index)
     finally:
-        INDEX.parent.mkdir(parents=True, exist_ok=True)
-        INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+        save_index(index)
 
 
 if __name__ == "__main__":

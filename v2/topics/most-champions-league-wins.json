@@ -1,0 +1,148 @@
+{
+  "youtube": {
+    "title": "MOST CHAMPIONS LEAGUE WINS! 😱🏆",
+    "description": "Most UCL Titles — 1956 - 2024\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "champions league",
+      "real madrid",
+      "ac milan",
+      "bayern",
+      "liverpool",
+      "barcelona",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "box",
+    "title": "Most UCL Titles",
+    "subtitle": "1956 - 2024",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1950s",
+        "values": {
+          "rma": 4,
+          "mil": 0,
+          "bay": 0,
+          "liv": 0,
+          "bar": 0
+        }
+      },
+      {
+        "label": "1960s",
+        "values": {
+          "rma": 2,
+          "mil": 2,
+          "bay": 0,
+          "liv": 0,
+          "bar": 0
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "rma": 0,
+          "mil": 0,
+          "bay": 3,
+          "liv": 2,
+          "bar": 0
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "rma": 0,
+          "mil": 1,
+          "bay": 0,
+          "liv": 2,
+          "bar": 0
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "rma": 1,
+          "mil": 2,
+          "bay": 0,
+          "liv": 0,
+          "bar": 1
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "rma": 2,
+          "mil": 2,
+          "bay": 1,
+          "liv": 1,
+          "bar": 2
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "rma": 4,
+          "mil": 0,
+          "bay": 1,
+          "liv": 1,
+          "bar": 2
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "rma": 2,
+          "mil": 0,
+          "bay": 1,
+          "liv": 0,
+          "bar": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "rma",
+      "name": "Real Madrid",
+      "color": "#ffffff",
+      "team": "Real Madrid",
+      "country": "es"
+    },
+    {
+      "id": "mil",
+      "name": "AC Milan",
+      "color": "#ffffff",
+      "team": "AC Milan",
+      "country": "it"
+    },
+    {
+      "id": "bay",
+      "name": "Bayern",
+      "color": "#ffffff",
+      "team": "Bayern Munich",
+      "country": "de"
+    },
+    {
+      "id": "liv",
+      "name": "Liverpool",
+      "color": "#ffffff",
+      "team": "Liverpool",
+      "country": "gb-eng"
+    },
+    {
+      "id": "bar",
+      "name": "Barcelona",
+      "color": "#ffffff",
+      "team": "Barcelona",
+      "country": "es"
+    }
+  ]
+}

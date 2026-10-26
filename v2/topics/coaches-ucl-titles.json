@@ -1,0 +1,259 @@
+{
+  "youtube": {
+    "title": "Mourinho vs Pep Guardiola vs Ancelotti 😱🏆",
+    "description": "Most UCL Titles — As A Coach\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "ancelotti",
+      "guardiola",
+      "mourinho",
+      "zidane",
+      "champions league",
+      "coach",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "navy",
+    "title": "Most UCL Titles",
+    "subtitle": "As A Coach",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "2003",
+        "values": {
+          "anc": 1,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2004",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 1
+        }
+      },
+      {
+        "label": "2005",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2006",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2007",
+        "values": {
+          "anc": 1,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2008",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2009",
+        "values": {
+          "anc": 0,
+          "pep": 1,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2010",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 1
+        }
+      },
+      {
+        "label": "2011",
+        "values": {
+          "anc": 0,
+          "pep": 1,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2012",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2013",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2014",
+        "values": {
+          "anc": 1,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2015",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2016",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 1,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2017",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 1,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2018",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 1,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2019",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2020",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2021",
+        "values": {
+          "anc": 0,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2022",
+        "values": {
+          "anc": 1,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2023",
+        "values": {
+          "anc": 0,
+          "pep": 1,
+          "zid": 0,
+          "mou": 0
+        }
+      },
+      {
+        "label": "2024",
+        "values": {
+          "anc": 1,
+          "pep": 0,
+          "zid": 0,
+          "mou": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "anc",
+      "name": "Ancelotti",
+      "color": "#1e3a8a",
+      "player": "Carlo Ancelotti",
+      "country": "it"
+    },
+    {
+      "id": "pep",
+      "name": "Guardiola",
+      "color": "#38bdf8",
+      "player": "Pep Guardiola",
+      "country": "es"
+    },
+    {
+      "id": "zid",
+      "name": "Zidane",
+      "color": "#f8fafc",
+      "player": "Zinedine Zidane",
+      "country": "fr"
+    },
+    {
+      "id": "mou",
+      "name": "Mourinho",
+      "color": "#0f172a",
+      "player": "José Mourinho",
+      "country": "pt"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {CHART_BOTTOM, CHART_TOP, TICK_END_X, type Layout} from '../engine/layout';
+import {CHART_BOTTOM, CHART_TOP, TICK_END_X, xOfValue, type Layout} from '../engine/layout';
 import {formatTick, type Domain} from '../engine/scale';
 import {fonts} from '../fonts';
 import type {Theme} from '../theme/themes';
@@ -11,14 +11,15 @@ export const Axis: React.FC<{
 	format: 'int' | 'compact';
 	opacity: number;
 }> = ({layout, domain, theme, format, opacity}) => {
-	const x0 = layout.axisX + 40;
-	const xOf = (v: number) => x0 + ((v - domain.min) / (domain.max - domain.min)) * (TICK_END_X - x0);
+	const x0 = layout.axisX;
+	const xEnd = layout.scaleEnd;
+	const xOf = (v: number) => xOfValue(layout, domain, v);
 	const top = CHART_TOP - 30;
 	return (
 		<div style={{position: 'absolute', inset: 0, opacity}}>
 			{domain.ticks.map((v) => {
 				const x = xOf(v);
-				const edge = Math.min(1, (x - x0 + 20) / 60, (TICK_END_X + 30 - x) / 60);
+				const edge = Math.min(1, (x - x0 + 20) / 60, (xEnd + 30 - x) / 60);
 				return (
 					<React.Fragment key={v}>
 						<div

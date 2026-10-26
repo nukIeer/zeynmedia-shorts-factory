@@ -2,13 +2,16 @@ import React from 'react';
 import {Audio, Sequence, interpolate, staticFile, useVideoConfig} from 'remotion';
 import type {SfxEvent} from '../engine/timeline';
 
-const SFX: Record<SfxEvent['kind'], {files: string[]; volume: number}> = {
-	swoosh: {files: ['whoosh_4.mp3'], volume: 0.7},
-	tick: {files: ['tick_1.mp3', 'tick_2.mp3'], volume: 0.35},
-	pop: {files: ['win_3.mp3', 'win_1.mp3'], volume: 0.55},
-	whoosh: {files: ['whoosh_1.mp3', 'whoosh_2.mp3', 'whoosh_3.mp3'], volume: 0.85},
-	impact: {files: ['impact_1.mp3'], volume: 1},
-	win: {files: ['win_4.mp3'], volume: 0.8},
+type Layer = {files: string[]; volume: number};
+
+// 808 / sub layers (scripts/make_bass_sfx.py) carry the hits under phonk; the bright layers keep the sparkle
+const SFX: Record<SfxEvent['kind'], Layer[]> = {
+	swoosh: [{files: ['bass_riser.mp3'], volume: 0.9}],
+	tick: [{files: ['deep_tick.mp3'], volume: 0.55}],
+	pop: [{files: ['bass_hit.mp3'], volume: 0.95}, {files: ['win_3.mp3', 'win_1.mp3'], volume: 0.25}],
+	whoosh: [{files: ['sub_whoosh.mp3'], volume: 1}],
+	impact: [{files: ['sub_boom.mp3'], volume: 1}],
+	win: [{files: ['bass_drop.mp3'], volume: 0.9}, {files: ['win_4.mp3'], volume: 0.45}],
 };
 
 export const Sound: React.FC<{
@@ -33,15 +36,13 @@ export const Sound: React.FC<{
 				/>
 			) : null}
 			{sfx
-				? events.map((e, i) => {
-						const spec = SFX[e.kind];
-						const file = spec.files[i % spec.files.length];
-						return (
-							<Sequence key={i} from={Math.max(0, Math.round(e.t * fps))} durationInFrames={Math.round(2.5 * fps)} layout="none">
-								<Audio src={staticFile(`sfx/${file}`)} volume={spec.volume * sfxVolume} />
+				? events.flatMap((e, i) =>
+						SFX[e.kind].map((layer, j) => (
+							<Sequence key={`${i}-${j}`} from={Math.max(0, Math.round(e.t * fps))} durationInFrames={Math.round(2.5 * fps)} layout="none">
+								<Audio src={staticFile(`sfx/${layer.files[i % layer.files.length]}`)} volume={layer.volume * sfxVolume} />
 							</Sequence>
-						);
-				  })
+						)),
+				  )
 				: null}
 		</>
 	);

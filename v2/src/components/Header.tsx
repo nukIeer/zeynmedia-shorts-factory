@@ -17,7 +17,7 @@ export const Header: React.FC<{title: string; subtitle: string; theme: Theme}> =
 		<div
 			style={{
 				position: 'absolute',
-				top: 300,
+				top: 250,
 				left: 40,
 				right: 40,
 				display: 'flex',

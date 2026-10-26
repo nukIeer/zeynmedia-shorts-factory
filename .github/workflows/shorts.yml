@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       topic:
-        description: "Belirli bir konu (boş = rastgele)"
+        description: "v2/topics içinden konu adı, örn. world-cup-winners (boş = sıradaki)"
         required: false
         default: ""
       privacy:
@@ -17,10 +17,6 @@ on:
         default: public
       skip_upload:
         description: "Sadece video üret, YouTube'a yükleme"
-        type: boolean
-        default: false
-      sample:
-        description: "NIM yerine örnek veriyle test et"
         type: boolean
         default: false
 
@@ -57,7 +53,8 @@ jobs:
       PIXABAY_API_KEY: ${{ secrets.PIXABAY }}
       NIM_MODEL: ${{ vars.NIM_MODEL }}
       GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
-      CONTENT_LANG: ${{ vars.CONTENT_LANG || 'tr' }}
+      CONTENT_LANG: ${{ vars.CONTENT_LANG || 'en' }}
+      MUSIC_DIR: music-repo
       INPUT_TOPIC: ${{ inputs.topic }}
       YT_PRIVACY: ${{ inputs.privacy || vars.YT_PRIVACY || 'public' }}
       SKIP_UPLOAD: ${{ inputs.skip_upload || secrets.YT_REFRESH_TOKEN == '' }}
@@ -69,26 +66,40 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      # Music lives in the private repo; read-only deploy key
+      - uses: actions/checkout@v4
+        with:
+          repository: nukIeer/zeynmedia-music
+          ssh-key: ${{ secrets.MUSIC_DEPLOY_KEY }}
+          path: music-repo
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: v2/requirements.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: v2/package-lock.json
 
       - name: Install dependencies
         timeout-minutes: 10
         run: |
-          pip install -r requirements.txt
-          python -m playwright install chromium
+          pip install -r v2/requirements.txt
+          cd v2 && npm ci && npx remotion browser ensure
 
       - name: Produce short
-        timeout-minutes: 25
-        run: python factory/main.py ${{ inputs.sample && '--sample' || '' }}
+        timeout-minutes: 35
+        run: python v2/factory/produce.py
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: short-${{ github.run_id }}
-          path: output/
+          path: output/*.mp4
           if-no-files-found: ignore
           retention-days: 14
 
@@ -117,5 +128,5 @@ jobs:
         run: |
           git config user.name "zeynmedia-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/history.json
+          git add data/history.json v2/public/assets
           git diff --cached --quiet || (git commit -m "history: $(date -u +%F' '%H:%M)" && git pull --rebase -q && git push)

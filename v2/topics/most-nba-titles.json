@@ -1,0 +1,153 @@
+{
+  "youtube": {
+    "title": "MOST NBA CHAMPIONSHIPS! 🏀🏆",
+    "description": "NBA Champions — Most Titles\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "nba",
+      "celtics",
+      "lakers",
+      "warriors",
+      "bulls",
+      "spurs",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "grid",
+    "title": "NBA Champions",
+    "subtitle": "Most Titles",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1940s",
+        "values": {
+          "bos": 0,
+          "lal": 1,
+          "gsw": 1,
+          "chi": 0,
+          "sas": 0
+        }
+      },
+      {
+        "label": "1950s",
+        "values": {
+          "bos": 2,
+          "lal": 4,
+          "gsw": 1,
+          "chi": 0,
+          "sas": 0
+        }
+      },
+      {
+        "label": "1960s",
+        "values": {
+          "bos": 9,
+          "lal": 0,
+          "gsw": 0,
+          "chi": 0,
+          "sas": 0
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "bos": 2,
+          "lal": 1,
+          "gsw": 1,
+          "chi": 0,
+          "sas": 0
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "bos": 3,
+          "lal": 5,
+          "gsw": 0,
+          "chi": 0,
+          "sas": 0
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "bos": 0,
+          "lal": 0,
+          "gsw": 0,
+          "chi": 6,
+          "sas": 1
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "bos": 1,
+          "lal": 4,
+          "gsw": 0,
+          "chi": 0,
+          "sas": 3
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "bos": 0,
+          "lal": 1,
+          "gsw": 3,
+          "chi": 0,
+          "sas": 1
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "bos": 1,
+          "lal": 1,
+          "gsw": 1,
+          "chi": 0,
+          "sas": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "bos",
+      "name": "Celtics",
+      "color": "#ffffff",
+      "team": "Boston Celtics"
+    },
+    {
+      "id": "lal",
+      "name": "Lakers",
+      "color": "#ffffff",
+      "team": "Los Angeles Lakers"
+    },
+    {
+      "id": "gsw",
+      "name": "Warriors",
+      "color": "#ffffff",
+      "team": "Golden State Warriors"
+    },
+    {
+      "id": "chi",
+      "name": "Bulls",
+      "color": "#ffffff",
+      "team": "Chicago Bulls"
+    },
+    {
+      "id": "sas",
+      "name": "Spurs",
+      "color": "#ffffff",
+      "team": "San Antonio Spurs"
+    }
+  ]
+}

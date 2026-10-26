@@ -27,7 +27,7 @@ const Badge: React.FC<{src: string; size: number; round?: boolean}> = ({src, siz
 			overflow: 'hidden',
 		}}
 	>
-		<Img src={asset(src)} style={{width: '80%', height: '80%', objectFit: 'contain'}} />
+		<Img src={asset(src)} style={{width: '84%', height: '84%', objectFit: 'contain'}} />
 	</div>
 );
 
@@ -41,7 +41,9 @@ export const Portrait: React.FC<{entity: Entity; theme: Theme; size: number; rin
 	// Only transparent cutouts can spill out of the frame without showing a photo rectangle
 	const cutout = !!entity.image && /\.png($|\?)|^data:image\/png/i.test(entity.image);
 	const pop = cutout ? 1.28 : 1;
-	const badges = [entity.badge, theme.flags === 'badge' ? entity.flag : undefined].filter(Boolean) as string[];
+	// Clubs without a player photo show their crest big inside the frame instead of as a corner badge
+	const crest = !entity.image && entity.badge ? entity.badge : undefined;
+	const badges = [crest ? undefined : entity.badge, theme.flags === 'badge' ? entity.flag : undefined].filter(Boolean) as string[];
 	const glow = pulse > 0 ? `0 0 ${30 * pulse}px ${12 * pulse}px rgba(255,255,255,${0.6 * pulse})` : '0 8px 20px rgba(0,0,0,0.35)';
 
 	if (theme.portrait === 'logo') {
@@ -52,7 +54,7 @@ export const Portrait: React.FC<{entity: Entity; theme: Theme; size: number; rin
 					height: size,
 					borderRadius: '50%',
 					background: 'radial-gradient(circle, #ffffff 0%, #f1e6ff 100%)',
-					border: `${Math.max(4, size * 0.06)}px solid #ffffff`,
+					border: `${Math.max(4, size * 0.04)}px solid #ffffff`,
 					boxShadow: `0 0 0 ${Math.max(3, size * 0.04)}px rgba(170,90,255,0.7), ${glow}`,
 					display: 'flex',
 					alignItems: 'center',
@@ -61,7 +63,9 @@ export const Portrait: React.FC<{entity: Entity; theme: Theme; size: number; rin
 				}}
 			>
 				{entity.badge || entity.image ? (
-					<Img src={asset((entity.badge || entity.image)!)} style={{width: '78%', height: '78%', objectFit: 'contain'}} />
+					<Img src={asset((entity.badge || entity.image)!)} style={{width: '88%', height: '88%', objectFit: 'contain'}} />
+				) : entity.flag ? (
+					<Img src={asset(entity.flag)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
 				) : (
 					<span style={{fontFamily: fonts.number, fontSize: size * 0.4, color: '#6d28d9'}}>{initials(entity.name)}</span>
 				)}
@@ -122,6 +126,11 @@ export const Portrait: React.FC<{entity: Entity; theme: Theme; size: number; rin
 						</div>
 					) : null}
 				</>
+			) : crest ? (
+				<div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', clipPath: shape}}>
+					<div style={{position: 'absolute', inset: 0, background: 'radial-gradient(circle, #ffffff 0%, #e8eeff 100%)'}} />
+					<Img src={asset(crest)} style={{position: 'relative', width: diamond ? '58%' : '74%', height: diamond ? '58%' : '74%', objectFit: 'contain'}} />
+				</div>
 			) : (
 				<div
 					style={{
@@ -139,9 +148,9 @@ export const Portrait: React.FC<{entity: Entity; theme: Theme; size: number; rin
 				</div>
 			)}
 			{badges.length ? (
-				<div style={{position: 'absolute', right: -size * 0.3, bottom: size * 0.02, display: 'flex', flexDirection: 'column', gap: size * 0.04}}>
+				<div style={{position: 'absolute', right: -size * 0.36, bottom: size * 0.02, display: 'flex', flexDirection: 'column', gap: size * 0.04}}>
 					{badges.map((b) => (
-						<Badge key={b} src={b} size={size * 0.3} />
+						<Badge key={b} src={b} size={size * 0.38} />
 					))}
 				</div>
 			) : null}

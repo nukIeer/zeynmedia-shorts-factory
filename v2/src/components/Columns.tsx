@@ -91,7 +91,7 @@ export const Columns: React.FC<{
 				const past = s - (k + 1);
 				if (x > 1240 || x < layout.axisX - 40) return null;
 				const enterFade = Math.min(1, (1200 - x) / 140);
-				const fade = grid ? Math.min(1, (x - layout.axisX) / 80) : past > 0 ? Math.max(0, 1 - past / 0.3) : 1;
+				const fade = past > 0 ? Math.max(0, 1 - past / (grid ? 0.6 : 0.3)) : 1;
 				const op = Math.max(0, Math.min(enterFade, fade));
 				if (op <= 0) return null;
 				const lineColor = theme.delta === 'navy' ? 'rgba(12,22,90,0.85)' : theme.deltaTrack;
@@ -118,6 +118,7 @@ export const Columns: React.FC<{
 							: p.entities.map((e) => {
 									if (e.others && !grid) return null;
 									const v = step.values[e.id] ?? 0;
+									if (!grid && v <= 0) return null;
 									const size = grid ? layout.deltaSize * 0.9 : layout.deltaSize;
 									const y = rowY[e.id];
 									if (grid) {

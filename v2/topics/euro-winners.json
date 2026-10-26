@@ -1,0 +1,147 @@
+{
+  "youtube": {
+    "title": "Most EURO Wins! 🏆🇪🇸",
+    "description": "Euro Champions — All Winners\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "euro",
+      "spain",
+      "germany",
+      "italy",
+      "france",
+      "portugal",
+      "ronaldo",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "grid",
+    "title": "Euro Champions",
+    "subtitle": "All Winners",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1960s",
+        "values": {
+          "esp": 1,
+          "ger": 0,
+          "ita": 1,
+          "fra": 0,
+          "por": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "esp": 0,
+          "ger": 1,
+          "ita": 0,
+          "fra": 0,
+          "por": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "esp": 0,
+          "ger": 1,
+          "ita": 0,
+          "fra": 1,
+          "por": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "esp": 0,
+          "ger": 1,
+          "ita": 0,
+          "fra": 0,
+          "por": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "esp": 1,
+          "ger": 0,
+          "ita": 0,
+          "fra": 1,
+          "por": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "esp": 1,
+          "ger": 0,
+          "ita": 0,
+          "fra": 0,
+          "por": 1,
+          "oth": 0
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "esp": 1,
+          "ger": 0,
+          "ita": 1,
+          "fra": 0,
+          "por": 0,
+          "oth": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "esp",
+      "name": "Spain",
+      "color": "#ffffff",
+      "country": "es"
+    },
+    {
+      "id": "ger",
+      "name": "Germany",
+      "color": "#ffffff",
+      "country": "de"
+    },
+    {
+      "id": "ita",
+      "name": "Italy",
+      "color": "#ffffff",
+      "country": "it"
+    },
+    {
+      "id": "fra",
+      "name": "France",
+      "color": "#ffffff",
+      "country": "fr"
+    },
+    {
+      "id": "por",
+      "name": "Portugal",
+      "color": "#ffffff",
+      "country": "pt"
+    },
+    {
+      "id": "oth",
+      "name": "Others",
+      "color": "#ffffff",
+      "others": true
+    }
+  ]
+}

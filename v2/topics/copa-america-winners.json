@@ -1,0 +1,164 @@
+{
+  "youtube": {
+    "title": "Argentina vs Uruguay vs Brazil Copa América Titles 🏆🔥",
+    "description": "Copa America — All Winners\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "copa america",
+      "argentina",
+      "uruguay",
+      "brazil",
+      "messi",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "grid",
+    "title": "Copa America",
+    "subtitle": "All Winners",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1910s",
+        "values": {
+          "arg": 0,
+          "uru": 2,
+          "bra": 1,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1920s",
+        "values": {
+          "arg": 4,
+          "uru": 4,
+          "bra": 1,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1930s",
+        "values": {
+          "arg": 1,
+          "uru": 1,
+          "bra": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "1940s",
+        "values": {
+          "arg": 4,
+          "uru": 1,
+          "bra": 1,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1950s",
+        "values": {
+          "arg": 3,
+          "uru": 2,
+          "bra": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "1960s",
+        "values": {
+          "arg": 0,
+          "uru": 1,
+          "bra": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "arg": 0,
+          "uru": 0,
+          "bra": 0,
+          "oth": 2
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "arg": 0,
+          "uru": 2,
+          "bra": 1,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "arg": 2,
+          "uru": 1,
+          "bra": 2,
+          "oth": 0
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "arg": 0,
+          "uru": 0,
+          "bra": 2,
+          "oth": 1
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "arg": 0,
+          "uru": 1,
+          "bra": 1,
+          "oth": 2
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "arg": 2,
+          "uru": 0,
+          "bra": 0,
+          "oth": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "arg",
+      "name": "Argentina",
+      "color": "#ffffff",
+      "country": "ar"
+    },
+    {
+      "id": "uru",
+      "name": "Uruguay",
+      "color": "#ffffff",
+      "country": "uy"
+    },
+    {
+      "id": "bra",
+      "name": "Brazil",
+      "color": "#ffffff",
+      "country": "br"
+    },
+    {
+      "id": "oth",
+      "name": "Others",
+      "color": "#ffffff",
+      "others": true
+    }
+  ]
+}

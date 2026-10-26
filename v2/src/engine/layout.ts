@@ -2,8 +2,8 @@ import type {TemplateId} from '../schema';
 
 export const W = 1080;
 export const H = 1920;
-export const CHART_TOP = 610;
-export const CHART_BOTTOM = 1410;
+export const CHART_TOP = 580;
+export const CHART_BOTTOM = 1560;
 export const TICK_END_X = 1010;
 
 export type Layout = {
@@ -14,31 +14,36 @@ export type Layout = {
 	firstRowY: number;
 	boxH: number;
 	minBoxW: number;
-	barSpan: number;
-	portrait: number;
+		portrait: number;
 	absorbX: number;
 	deltaSize: number;
+	scaleEnd: number; // x where the axis maximum sits; the right side stays free for the step columns
 };
 
 const AXIS_X: Record<TemplateId, number> = {bar: 108, navy: 196, box: 214, diamond: 232, grid: 250};
-const ABSORB_X: Record<TemplateId, number> = {bar: 560, navy: 900, box: 930, diamond: 960, grid: 500};
+const ABSORB_X: Record<TemplateId, number> = {bar: 560, navy: 920, box: 940, diamond: 960, grid: 920};
+const SCALE_END: Record<TemplateId, number> = {bar: 880, navy: 760, box: 800, diamond: 810, grid: 780};
 
 export const layoutFor = (template: TemplateId, rows: number): Layout => {
 	const usable = CHART_BOTTOM - CHART_TOP;
 	const pitch = Math.min(330, usable / rows);
-	const boxH = Math.min(178, pitch * 0.6);
+	const boxH = Math.min(190, pitch * 0.7);
 	const delta = template === 'navy' || template === 'box' || template === 'diamond';
 	return {
 		axisX: AXIS_X[template],
 		flagX: AXIS_X[template] - 82,
-		tagW: template === 'bar' ? 0 : Math.max(34, boxH * 0.3),
+		tagW: template === 'bar' ? 0 : Math.max(42, boxH * 0.32),
 		pitch,
 		firstRowY: CHART_TOP + (usable - rows * pitch) / 2 + pitch / 2,
 		boxH,
-		minBoxW: template === 'bar' ? 150 : boxH * 1.55,
-		barSpan: template === 'bar' ? 540 : template === 'grid' ? 120 : delta ? 210 : 300,
-		portrait: template === 'grid' ? boxH * 1.08 : Math.min(delta ? 200 : 232, pitch * 0.78),
+		minBoxW: template === 'bar' ? 150 : boxH * 1.05,
+		portrait: template === 'grid' ? pitch * 0.92 : Math.min(delta ? 210 : 240, pitch * 0.86),
 		absorbX: ABSORB_X[template],
-		deltaSize: Math.min(118, pitch * 0.42),
+		deltaSize: Math.min(124, pitch * 0.5),
+		scaleEnd: SCALE_END[template],
 	};
 };
+
+/** Value -> x on the shared axis; box right edges and tick marks both use this so bars stay true to the numbers. */
+export const xOfValue = (layout: Layout, domain: {min: number; max: number}, v: number) =>
+	layout.axisX + ((v - domain.min) / (domain.max - domain.min)) * (layout.scaleEnd - layout.axisX);

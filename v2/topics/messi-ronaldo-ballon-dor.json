@@ -1,0 +1,150 @@
+{
+  "youtube": {
+    "title": "Messi vs Ronaldo Ballon d'Or 🏆🔥",
+    "description": "Messi vs Ronaldo — Ballon d'Or Wins\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "messi",
+      "ronaldo",
+      "ballon d'or",
+      "goat",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "bar",
+    "title": "Messi vs Ronaldo",
+    "subtitle": "Ballon d'Or Wins",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "2008",
+        "values": {
+          "mes": 0,
+          "ron": 1
+        }
+      },
+      {
+        "label": "2009",
+        "values": {
+          "mes": 1,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2010",
+        "values": {
+          "mes": 1,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2011",
+        "values": {
+          "mes": 1,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2012",
+        "values": {
+          "mes": 1,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2013",
+        "values": {
+          "mes": 0,
+          "ron": 1
+        }
+      },
+      {
+        "label": "2014",
+        "values": {
+          "mes": 0,
+          "ron": 1
+        }
+      },
+      {
+        "label": "2015",
+        "values": {
+          "mes": 1,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2016",
+        "values": {
+          "mes": 0,
+          "ron": 1
+        }
+      },
+      {
+        "label": "2017",
+        "values": {
+          "mes": 0,
+          "ron": 1
+        }
+      },
+      {
+        "label": "2018",
+        "values": {
+          "mes": 0,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2019",
+        "values": {
+          "mes": 1,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2021",
+        "values": {
+          "mes": 1,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2022",
+        "values": {
+          "mes": 0,
+          "ron": 0
+        }
+      },
+      {
+        "label": "2023",
+        "values": {
+          "mes": 1,
+          "ron": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "mes",
+      "name": "Messi",
+      "color": "#60a5fa",
+      "player": "Lionel Messi",
+      "country": "ar"
+    },
+    {
+      "id": "ron",
+      "name": "Ronaldo",
+      "color": "#e5484d",
+      "player": "Cristiano Ronaldo",
+      "country": "pt"
+    }
+  ]
+}

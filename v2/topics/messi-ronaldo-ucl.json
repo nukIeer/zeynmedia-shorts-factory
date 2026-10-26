@@ -1,0 +1,136 @@
+{
+  "youtube": {
+    "title": "Ronaldo vs Messi Champions League Titles 🏆😱",
+    "description": "Ronaldo vs Messi — Champions League Titles\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "ronaldo",
+      "messi",
+      "champions league",
+      "goat",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "diamond",
+    "title": "Ronaldo vs Messi",
+    "subtitle": "Champions League Titles",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "2006",
+        "values": {
+          "ron": 0,
+          "mes": 1
+        }
+      },
+      {
+        "label": "2007",
+        "values": {
+          "ron": 0,
+          "mes": 0
+        }
+      },
+      {
+        "label": "2008",
+        "values": {
+          "ron": 1,
+          "mes": 0
+        }
+      },
+      {
+        "label": "2009",
+        "values": {
+          "ron": 0,
+          "mes": 1
+        }
+      },
+      {
+        "label": "2010",
+        "values": {
+          "ron": 0,
+          "mes": 0
+        }
+      },
+      {
+        "label": "2011",
+        "values": {
+          "ron": 0,
+          "mes": 1
+        }
+      },
+      {
+        "label": "2012",
+        "values": {
+          "ron": 0,
+          "mes": 0
+        }
+      },
+      {
+        "label": "2013",
+        "values": {
+          "ron": 0,
+          "mes": 0
+        }
+      },
+      {
+        "label": "2014",
+        "values": {
+          "ron": 1,
+          "mes": 0
+        }
+      },
+      {
+        "label": "2015",
+        "values": {
+          "ron": 0,
+          "mes": 1
+        }
+      },
+      {
+        "label": "2016",
+        "values": {
+          "ron": 1,
+          "mes": 0
+        }
+      },
+      {
+        "label": "2017",
+        "values": {
+          "ron": 1,
+          "mes": 0
+        }
+      },
+      {
+        "label": "2018",
+        "values": {
+          "ron": 1,
+          "mes": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "ron",
+      "name": "Ronaldo",
+      "color": "#dc2626",
+      "player": "Cristiano Ronaldo",
+      "country": "pt"
+    },
+    {
+      "id": "mes",
+      "name": "Messi",
+      "color": "#60a5fa",
+      "player": "Lionel Messi",
+      "country": "ar"
+    }
+  ]
+}

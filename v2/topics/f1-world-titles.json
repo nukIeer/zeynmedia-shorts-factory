@@ -1,0 +1,378 @@
+{
+  "youtube": {
+    "title": "Hamilton vs Schumacher vs Verstappen World Titles 🏎️🏆",
+    "description": "F1 World Titles — 1994 - 2024\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "f1",
+      "formula 1",
+      "hamilton",
+      "schumacher",
+      "verstappen",
+      "vettel",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "box",
+    "title": "F1 World Titles",
+    "subtitle": "1994 - 2024",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1994",
+        "values": {
+          "ham": 0,
+          "msc": 1,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "1995",
+        "values": {
+          "ham": 0,
+          "msc": 1,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "1996",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "1997",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "1998",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "1999",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2000",
+        "values": {
+          "ham": 0,
+          "msc": 1,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2001",
+        "values": {
+          "ham": 0,
+          "msc": 1,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2002",
+        "values": {
+          "ham": 0,
+          "msc": 1,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2003",
+        "values": {
+          "ham": 0,
+          "msc": 1,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2004",
+        "values": {
+          "ham": 0,
+          "msc": 1,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2005",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 1
+        }
+      },
+      {
+        "label": "2006",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 1
+        }
+      },
+      {
+        "label": "2007",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2008",
+        "values": {
+          "ham": 1,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2009",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2010",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 1,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2011",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 1,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2012",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 1,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2013",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 1,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2014",
+        "values": {
+          "ham": 1,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2015",
+        "values": {
+          "ham": 1,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2016",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2017",
+        "values": {
+          "ham": 1,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2018",
+        "values": {
+          "ham": 1,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2019",
+        "values": {
+          "ham": 1,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2020",
+        "values": {
+          "ham": 1,
+          "msc": 0,
+          "ver": 0,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2021",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 1,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2022",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 1,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2023",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 1,
+          "vet": 0,
+          "alo": 0
+        }
+      },
+      {
+        "label": "2024",
+        "values": {
+          "ham": 0,
+          "msc": 0,
+          "ver": 1,
+          "vet": 0,
+          "alo": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "ham",
+      "name": "Hamilton",
+      "color": "#ffffff",
+      "player": "Lewis Hamilton",
+      "country": "gb"
+    },
+    {
+      "id": "msc",
+      "name": "Schumacher",
+      "color": "#ffffff",
+      "player": "Michael Schumacher",
+      "country": "de"
+    },
+    {
+      "id": "ver",
+      "name": "Verstappen",
+      "color": "#ffffff",
+      "player": "Max Verstappen",
+      "country": "nl"
+    },
+    {
+      "id": "vet",
+      "name": "Vettel",
+      "color": "#ffffff",
+      "player": "Sebastian Vettel",
+      "country": "de"
+    },
+    {
+      "id": "alo",
+      "name": "Alonso",
+      "color": "#ffffff",
+      "player": "Fernando Alonso",
+      "country": "es"
+    }
+  ]
+}

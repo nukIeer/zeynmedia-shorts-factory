@@ -7,7 +7,7 @@ import {Confetti, Crown, Flash, Sparks, type Burst} from './components/Effects';
 import {Header} from './components/Header';
 import {Row} from './components/Row';
 import {Sound} from './components/Sound';
-import {layoutFor} from './engine/layout';
+import {layoutFor, xOfValue} from './engine/layout';
 import {domainFor, formatValue} from './engine/scale';
 import {
 	absorbTime,
@@ -42,14 +42,13 @@ export const Short: React.FC<ShortProps> = (p) => {
 	const slots = smoothRanksAt(p, t, tm);
 	const realValues = p.entities.filter((e) => !e.others).map((e) => values[e.id]);
 	const domain = domainFor(realValues, theme.zoomScale);
-	const ratio = (v: number) => Math.max(0, Math.min(1, (v - domain.min) / (domain.max - domain.min)));
 
 	const rowY: Record<string, number> = {};
 	const boxW: Record<string, number> = {};
 	const boxRight: Record<string, number> = {};
 	for (const e of p.entities) {
 		rowY[e.id] = layout.firstRowY + slots[e.id] * layout.pitch;
-		boxW[e.id] = e.others ? layout.minBoxW * 1.35 : layout.minBoxW + ratio(values[e.id]) * layout.barSpan;
+		boxW[e.id] = e.others ? layout.minBoxW * 1.35 : Math.max(layout.minBoxW, xOfValue(layout, domain, values[e.id]) - layout.axisX - 3);
 		boxRight[e.id] = layout.axisX + 3 + boxW[e.id];
 	}
 
@@ -79,7 +78,7 @@ export const Short: React.FC<ShortProps> = (p) => {
 				<Background theme={theme} brand={p.brand} />
 				<Header title={p.title} subtitle={p.subtitle} theme={theme} />
 				<Axis layout={layout} domain={domain} theme={theme} format={p.valueFormat} opacity={easeOutCubic(t / 0.5)} />
-				{theme.delta === 'grid' ? <Columns p={p} theme={theme} layout={layout} s={s} rowY={rowY} boxRight={boxRight} t={t} /> : null}
+				<Columns p={p} theme={theme} layout={layout} s={s} rowY={rowY} boxRight={boxRight} t={t} />
 				{[...p.entities]
 					.map((e, i) => ({e, i}))
 					.sort((a, b) => slots[b.e.id] - slots[a.e.id])
@@ -110,10 +109,9 @@ export const Short: React.FC<ShortProps> = (p) => {
 							/>
 						);
 					})}
-				{theme.delta !== 'grid' ? <Columns p={p} theme={theme} layout={layout} s={s} rowY={rowY} boxRight={boxRight} t={t} /> : null}
 				<Sparks bursts={bursts} t={t} />
 				<Crown
-					x={theme.portrait === 'logo' ? boxRight[leader] + layout.portrait * 0.15 : boxRight[leader] + layout.tagW + layout.portrait * 0.3}
+					x={theme.portrait === 'logo' ? boxRight[leader] + layout.portrait * 0.55 : boxRight[leader] + layout.tagW + layout.portrait * 0.3}
 					y={rowY[leader] - layout.portrait * (theme.portrait === 'logo' ? 0.55 : 0.85)}
 					k={winnerK}
 				/>

@@ -1,0 +1,195 @@
+{
+  "youtube": {
+    "title": "Most World Cup Wins 🏆🌍",
+    "description": "World Cup — All Winners\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "world cup",
+      "brazil",
+      "germany",
+      "argentina",
+      "messi",
+      "fifa",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "grid",
+    "title": "World Cup",
+    "subtitle": "All Winners",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1930s",
+        "values": {
+          "bra": 0,
+          "ger": 0,
+          "ita": 2,
+          "arg": 0,
+          "fra": 0,
+          "uru": 1,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1940s",
+        "values": {
+          "bra": 0,
+          "ger": 0,
+          "ita": 0,
+          "arg": 0,
+          "fra": 0,
+          "uru": 0,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1950s",
+        "values": {
+          "bra": 1,
+          "ger": 1,
+          "ita": 0,
+          "arg": 0,
+          "fra": 0,
+          "uru": 1,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1960s",
+        "values": {
+          "bra": 1,
+          "ger": 0,
+          "ita": 0,
+          "arg": 0,
+          "fra": 0,
+          "uru": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "1970s",
+        "values": {
+          "bra": 1,
+          "ger": 1,
+          "ita": 0,
+          "arg": 1,
+          "fra": 0,
+          "uru": 0,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1980s",
+        "values": {
+          "bra": 0,
+          "ger": 0,
+          "ita": 1,
+          "arg": 1,
+          "fra": 0,
+          "uru": 0,
+          "oth": 0
+        }
+      },
+      {
+        "label": "1990s",
+        "values": {
+          "bra": 1,
+          "ger": 1,
+          "ita": 0,
+          "arg": 0,
+          "fra": 1,
+          "uru": 0,
+          "oth": 0
+        }
+      },
+      {
+        "label": "2000s",
+        "values": {
+          "bra": 1,
+          "ger": 0,
+          "ita": 1,
+          "arg": 0,
+          "fra": 0,
+          "uru": 0,
+          "oth": 0
+        }
+      },
+      {
+        "label": "2010s",
+        "values": {
+          "bra": 0,
+          "ger": 1,
+          "ita": 0,
+          "arg": 0,
+          "fra": 1,
+          "uru": 0,
+          "oth": 1
+        }
+      },
+      {
+        "label": "2020s",
+        "values": {
+          "bra": 0,
+          "ger": 0,
+          "ita": 0,
+          "arg": 1,
+          "fra": 0,
+          "uru": 0,
+          "oth": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "bra",
+      "name": "Brazil",
+      "color": "#ffffff",
+      "country": "br"
+    },
+    {
+      "id": "ger",
+      "name": "Germany",
+      "color": "#ffffff",
+      "country": "de"
+    },
+    {
+      "id": "ita",
+      "name": "Italy",
+      "color": "#ffffff",
+      "country": "it"
+    },
+    {
+      "id": "arg",
+      "name": "Argentina",
+      "color": "#ffffff",
+      "country": "ar"
+    },
+    {
+      "id": "fra",
+      "name": "France",
+      "color": "#ffffff",
+      "country": "fr"
+    },
+    {
+      "id": "uru",
+      "name": "Uruguay",
+      "color": "#ffffff",
+      "country": "uy"
+    },
+    {
+      "id": "oth",
+      "name": "Others",
+      "color": "#ffffff",
+      "others": true
+    }
+  ]
+}

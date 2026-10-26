@@ -15,7 +15,7 @@ export const domainFor = (values: number[], zoom: boolean): Domain => {
 	let min = 0;
 	if (zoom && lo > hi * 0.6) min = lo - (hi - lo) * 0.9 - hi * 0.04;
 	const max = hi + (hi - min) * 0.35;
-	const step = niceStep(max - min, 10);
+	const step = niceStep(max - min, 7);
 	const ticks: number[] = [];
 	for (let v = Math.ceil(min / step) * step; v <= max + 1e-9; v += step) ticks.push(v);
 	return {min, max, ticks};

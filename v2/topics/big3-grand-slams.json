@@ -1,0 +1,222 @@
+{
+  "youtube": {
+    "title": "Djokovic vs Nadal vs Federer Grand Slams 🎾🏆",
+    "description": "Djokovic vs Nadal vs Federer — Grand Slam Titles\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "djokovic",
+      "nadal",
+      "federer",
+      "tennis",
+      "grand slam",
+      "goat",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "navy",
+    "title": "Djokovic vs Nadal vs Federer",
+    "subtitle": "Grand Slam Titles",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "2003",
+        "values": {
+          "djo": 0,
+          "nad": 0,
+          "fed": 1
+        }
+      },
+      {
+        "label": "2004",
+        "values": {
+          "djo": 0,
+          "nad": 0,
+          "fed": 3
+        }
+      },
+      {
+        "label": "2005",
+        "values": {
+          "djo": 0,
+          "nad": 1,
+          "fed": 2
+        }
+      },
+      {
+        "label": "2006",
+        "values": {
+          "djo": 0,
+          "nad": 1,
+          "fed": 3
+        }
+      },
+      {
+        "label": "2007",
+        "values": {
+          "djo": 0,
+          "nad": 1,
+          "fed": 3
+        }
+      },
+      {
+        "label": "2008",
+        "values": {
+          "djo": 1,
+          "nad": 2,
+          "fed": 1
+        }
+      },
+      {
+        "label": "2009",
+        "values": {
+          "djo": 0,
+          "nad": 1,
+          "fed": 2
+        }
+      },
+      {
+        "label": "2010",
+        "values": {
+          "djo": 0,
+          "nad": 3,
+          "fed": 1
+        }
+      },
+      {
+        "label": "2011",
+        "values": {
+          "djo": 3,
+          "nad": 1,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2012",
+        "values": {
+          "djo": 1,
+          "nad": 1,
+          "fed": 1
+        }
+      },
+      {
+        "label": "2013",
+        "values": {
+          "djo": 1,
+          "nad": 2,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2014",
+        "values": {
+          "djo": 1,
+          "nad": 1,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2015",
+        "values": {
+          "djo": 3,
+          "nad": 0,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2016",
+        "values": {
+          "djo": 2,
+          "nad": 0,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2017",
+        "values": {
+          "djo": 0,
+          "nad": 2,
+          "fed": 2
+        }
+      },
+      {
+        "label": "2018",
+        "values": {
+          "djo": 2,
+          "nad": 1,
+          "fed": 1
+        }
+      },
+      {
+        "label": "2019",
+        "values": {
+          "djo": 2,
+          "nad": 2,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2020",
+        "values": {
+          "djo": 1,
+          "nad": 1,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2021",
+        "values": {
+          "djo": 3,
+          "nad": 0,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2022",
+        "values": {
+          "djo": 1,
+          "nad": 2,
+          "fed": 0
+        }
+      },
+      {
+        "label": "2023",
+        "values": {
+          "djo": 3,
+          "nad": 0,
+          "fed": 0
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "djo",
+      "name": "Djokovic",
+      "color": "#e5484d",
+      "player": "Novak Djokovic",
+      "country": "rs"
+    },
+    {
+      "id": "nad",
+      "name": "Nadal",
+      "color": "#f5a524",
+      "player": "Rafael Nadal",
+      "country": "es"
+    },
+    {
+      "id": "fed",
+      "name": "Federer",
+      "color": "#7cc0f5",
+      "player": "Roger Federer",
+      "country": "ch"
+    }
+  ]
+}

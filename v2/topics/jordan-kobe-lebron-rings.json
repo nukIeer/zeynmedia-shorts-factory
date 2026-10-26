@@ -1,0 +1,294 @@
+{
+  "youtube": {
+    "title": "Jordan vs Kobe vs LeBron Rings 💍🏀",
+    "description": "Jordan vs Kobe vs LeBron — NBA Championships\n\n#shorts #football #sports #stats #barchartrace",
+    "tags": [
+      "nba",
+      "michael jordan",
+      "kobe bryant",
+      "lebron james",
+      "goat",
+      "basketball",
+      "shorts",
+      "sports stats",
+      "bar chart race",
+      "comparison"
+    ]
+  },
+  "props": {
+    "brand": "ZEYN MEDYA",
+    "durationSec": 18,
+    "sfx": true,
+    "showDeltas": true,
+    "valueFormat": "int",
+    "template": "bar",
+    "title": "Jordan vs Kobe vs LeBron",
+    "subtitle": "NBA Championships",
+    "stepIcon": "trophy",
+    "steps": [
+      {
+        "label": "1991",
+        "values": {
+          "mj": 1,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1992",
+        "values": {
+          "mj": 1,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1993",
+        "values": {
+          "mj": 1,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1994",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1995",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1996",
+        "values": {
+          "mj": 1,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1997",
+        "values": {
+          "mj": 1,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1998",
+        "values": {
+          "mj": 1,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "1999",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2000",
+        "values": {
+          "mj": 0,
+          "kob": 1,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2001",
+        "values": {
+          "mj": 0,
+          "kob": 1,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2002",
+        "values": {
+          "mj": 0,
+          "kob": 1,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2003",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2004",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2005",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2006",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2007",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2008",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2009",
+        "values": {
+          "mj": 0,
+          "kob": 1,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2010",
+        "values": {
+          "mj": 0,
+          "kob": 1,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2011",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2012",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 1
+        }
+      },
+      {
+        "label": "2013",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 1
+        }
+      },
+      {
+        "label": "2014",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2015",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2016",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 1
+        }
+      },
+      {
+        "label": "2017",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2018",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2019",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 0
+        }
+      },
+      {
+        "label": "2020",
+        "values": {
+          "mj": 0,
+          "kob": 0,
+          "lbj": 1
+        }
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "mj",
+      "name": "Jordan",
+      "color": "#e5484d",
+      "player": "Michael Jordan",
+      "country": "us"
+    },
+    {
+      "id": "kob",
+      "name": "Kobe",
+      "color": "#a855f7",
+      "player": "Kobe Bryant",
+      "country": "us"
+    },
+    {
+      "id": "lbj",
+      "name": "LeBron",
+      "color": "#f5a524",
+      "player": "LeBron James",
+      "country": "us"
+    }
+  ]
+}

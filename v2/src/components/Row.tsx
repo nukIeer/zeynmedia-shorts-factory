@@ -48,10 +48,10 @@ export const Row: React.FC<{
 	const boxLeft = axisX + 3;
 	const boxRight = boxLeft + boxW;
 	const tagRight = theme.tagSide === 'right' ? boxRight + tagW : boxRight;
-	const portraitLeft = theme.portrait === 'logo' ? boxRight - P * 0.35 : tagRight - P * (theme.box === 'entity' ? 0.08 : 0.03);
+	const portraitLeft = theme.portrait === 'logo' ? boxRight + 6 : tagRight - P * (theme.box === 'entity' ? 0.08 : 0.03);
 	const slide = (1 - fx.enter) * -700;
 	const nameText = entity.others ? 'OTHERS' : entity.name;
-	const fontSize = boxH * (label.length > 4 ? 0.62 : 0.78);
+	const fontSize = Math.min(boxH * (label.length > 4 ? 0.62 : 0.78), (boxW * 0.86) / (label.length * 0.5));
 	const gold = fx.winner;
 
 	return (
@@ -77,7 +77,7 @@ export const Row: React.FC<{
 						transform: 'rotate(180deg)',
 					}}
 				>
-					<VerticalName name={nameText} size={Math.min(30, tagW * 0.62)} color={theme.tagText} />
+					<VerticalName name={nameText} size={Math.min(38, tagW * 0.72)} color={theme.tagText} />
 				</div>
 			) : null}
 			{theme.flags === 'left' && entity.flag ? (
