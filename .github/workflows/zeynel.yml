@@ -137,5 +137,15 @@ jobs:
         run: |
           git config user.name "zeynmedia-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/history_zeynel.json v2/public/assets
-          git diff --cached --quiet || (git commit -m "zeynel history: $(date -u +%F' '%H:%M)" && git pull --rebase -q && git push)
+          hist="${HISTORY_FILE:-data/history.json}"
+          cp v2/public/assets/index.json "$RUNNER_TEMP/index.json"
+          # Re-sync and re-append so parallel runs of either line never conflict on the history file
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp "$RUNNER_TEMP/index.json" v2/public/assets/index.json
+            python3 v2/factory/append_history.py output/history-entry.json "$hist"
+            git add "$hist" v2/public/assets
+            git diff --cached --quiet && break
+            git commit -qm "zeynel history: $(date -u +%F' '%H:%M)" && git push -q && break
+            sleep $((RANDOM % 10 + 5))
+          done

@@ -205,7 +205,10 @@ def main():
     (OUT / f"{stamp}-{slug}.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     if not os.environ.get("GITHUB_ACTIONS") and not video_id:
         return  # local preview renders don't count as published videos
-    history.append({"date": stamp, "topic": meta["topic"], "title": yt["title"], "video_id": video_id, "music": meta["music"], "engine": args.engine, "scheduled": os.environ.get("GITHUB_EVENT_NAME") == "schedule"})
+    entry = {"date": stamp, "topic": meta["topic"], "title": yt["title"], "video_id": video_id, "music": meta["music"], "engine": args.engine, "scheduled": os.environ.get("GITHUB_EVENT_NAME") == "schedule"}
+    # The workflow re-applies this entry on top of the latest origin history (see append_history.py)
+    (OUT / "history-entry.json").write_text(json.dumps(entry, ensure_ascii=False), encoding="utf-8")
+    history.append(entry)
     HISTORY.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
