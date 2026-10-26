@@ -61,6 +61,47 @@ def best_start(e, window):
     return round(max(0.0, onset * HOP - 0.15), 2), "drop"
 
 
+YT_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
+
+def _video_renderers(obj):
+    if isinstance(obj, dict):
+        if "videoRenderer" in obj:
+            yield obj["videoRenderer"]
+        for v in obj.values():
+            yield from _video_renderers(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            yield from _video_renderers(v)
+
+
+def _seconds(text):
+    parts = [int(x) for x in text.split(":")]
+    return sum(p * 60 ** i for i, p in enumerate(reversed(parts)))
+
+
+def youtube_match(stem, duration):
+    """Finds the YouTube upload this file was ripped from: same title search, length within 2.5 s."""
+    import time
+
+    import requests
+
+    query = re.sub(r"\(\d+\)$", "", stem).replace("_", " ").strip()
+    time.sleep(1)
+    html = requests.get("https://www.youtube.com/results", params={"search_query": query}, headers=YT_HEADERS, cookies={"CONSENT": "YES+1"}, timeout=30).text
+    m = re.search(r"var ytInitialData = (\{.*?\});</script>", html)
+    if not m:
+        return None
+    for v in list(_video_renderers(json.loads(m.group(1))))[:8]:
+        length = v.get("lengthText", {}).get("simpleText")
+        if length and abs(_seconds(length) - duration) <= 2.5:
+            return v["videoId"]
+    return None
+
+
 def main():
     import sys
 
@@ -68,7 +109,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("folder")
     ap.add_argument("--window", type=float, default=18)
+    ap.add_argument("--youtube", action="store_true", help="match each file to its YouTube upload and use the Most-replayed heatmap")
     args = ap.parse_args()
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
     folder = Path(args.folder)
     lib_path = folder / "library.json"
     old = {t["file"]: t for t in json.loads(lib_path.read_text(encoding="utf-8"))} if lib_path.exists() else {}
@@ -89,8 +132,18 @@ def main():
             skipped.append(p.name)
             continue
         start, method = best_start(e, args.window)
-        tracks.append({"file": p.name, "duration": duration, "start": start, "method": method, "slowed": bool(re.search(r"slow", p.stem, re.I))})
-        print(f"{start:6.1f}s / {duration:5.1f}s  {p.name}")
+        entry = {"file": p.name, "duration": duration, "start": start, "method": method, "slowed": bool(re.search(r"slow", p.stem, re.I))}
+        if args.youtube:
+            from music_hooks import best_window, heatmap
+
+            vid = old.get(p.name, {}).get("youtube") or youtube_match(p.stem, duration)
+            hm = best_window(heatmap(vid), args.window) if vid else None
+            if vid:
+                entry["youtube"] = vid
+            if hm:
+                entry.update(start=hm[0], method="heatmap", hookScore=hm[1], audioStart=start)
+        tracks.append(entry)
+        print(f"{entry['start']:6.1f}s / {duration:5.1f}s  {entry['method']:7s} {p.name}")
 
     lib_path.write_text(json.dumps(tracks, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"\n{len(tracks)} parça kütüphaneye yazıldı, {len(skipped)} dosya atlandı:")
