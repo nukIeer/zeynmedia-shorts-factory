@@ -25,7 +25,7 @@ sys.path.insert(0, str(ROOT / "factory"))
 from fetch_assets import build_props, load_index, save_index  # noqa: E402
 
 TOPICS = V2 / "topics"
-HISTORY = ROOT / os.environ.get("HISTORY_FILE", "data/history.json")  # each production line keeps its own
+HISTORY = ROOT / (os.environ.get("HISTORY_FILE") or "data/history.json")  # each production line keeps its own
 OUT = ROOT / "output"
 PUBLIC_MUSIC = V2 / "public" / "music"
 MUSIC_REPEAT_GAP = 12
@@ -205,7 +205,7 @@ def main():
     (OUT / f"{stamp}-{slug}.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     if not os.environ.get("GITHUB_ACTIONS") and not video_id:
         return  # local preview renders don't count as published videos
-    entry = {"date": stamp, "topic": meta["topic"], "title": yt["title"], "video_id": video_id, "music": meta["music"], "engine": args.engine, "scheduled": os.environ.get("GITHUB_EVENT_NAME") == "schedule"}
+    entry = {"date": stamp, "topic": meta["topic"], "title": yt["title"], "video_id": video_id, "music": meta["music"], "engine": args.engine, "scheduled": os.environ.get("GITHUB_EVENT_NAME") == "schedule" or os.environ.get("VIA_CRON") == "true"}
     # The workflow re-applies this entry on top of the latest origin history (see append_history.py)
     (OUT / "history-entry.json").write_text(json.dumps(entry, ensure_ascii=False), encoding="utf-8")
     history.append(entry)

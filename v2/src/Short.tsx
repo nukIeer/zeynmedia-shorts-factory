@@ -118,7 +118,7 @@ export const Short: React.FC<ShortProps> = (p) => {
 				<div
 					style={{
 						position: 'absolute',
-						bottom: 175,
+						bottom: 300,
 						left: 0,
 						right: 0,
 						textAlign: 'center',

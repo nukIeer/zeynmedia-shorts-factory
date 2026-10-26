@@ -6,6 +6,10 @@ on:
     - cron: "41 * * * *"
   workflow_dispatch:
     inputs:
+      via_cron:
+        description: "Cloudflare zamanlayıcısından geldi (saat kapısından geçer)"
+        type: boolean
+        default: false
       topic:
         description: "v2/topics içinden konu adı, örn. world-cup-winners (boş = sıradaki)"
         required: false
@@ -28,12 +32,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      run: ${{ github.event_name == 'workflow_dispatch' && 'true' || steps.gate.outputs.run }}
+      run: ${{ (github.event_name == 'workflow_dispatch' && !inputs.via_cron) && 'true' || steps.gate.outputs.run }}
     steps:
       - uses: actions/checkout@v4
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.via_cron
       - id: gate
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.via_cron
         run: python3 factory/schedule_gate.py
         env:
           HISTORY_FILE: data/history_zeynel.json
@@ -62,10 +66,11 @@ jobs:
       HISTORY_FILE: data/history_zeynel.json
       INPUT_TOPIC: ${{ inputs.topic }}
       YT_PRIVACY: ${{ inputs.privacy || vars.YT_PRIVACY || 'public' }}
+      VIA_CRON: ${{ inputs.via_cron || false }}
       SKIP_UPLOAD: ${{ inputs.skip_upload || secrets.ZEYNEL_YT_REFRESH_TOKEN == '' }}
     steps:
       - name: Random minute jitter
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.via_cron
         # Kept well under an hour so history is pushed before the next hourly gate
         run: sleep $((RANDOM % 1500))
 
@@ -102,7 +107,15 @@ jobs:
 
       - name: Produce short
         timeout-minutes: 35
-        run: python v2/factory/produce.py
+        env:
+          GATED: ${{ github.event_name == 'schedule' || inputs.via_cron }}
+        run: |
+          # Both GitHub's schedule and the Cloudflare cron can queue a run; re-check after the queue so a slot is filled once
+          if [ "$GATED" = "true" ]; then
+            python3 factory/schedule_gate.py | tee gate.txt
+            grep -q "ÇALIŞ" gate.txt || { echo "Bu saatin videosu zaten yüklendi"; exit 0; }
+          fi
+          python v2/factory/produce.py
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -113,7 +126,7 @@ jobs:
           retention-days: 14
 
       - name: Publish release
-        if: success()
+        if: success() && hashFiles('output/*.mp4') != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -133,7 +146,7 @@ jobs:
           gh release create "$tag" output/* --title "$title" --notes-file notes.md
 
       - name: Save history
-        if: success()
+        if: success() && hashFiles('output/history-entry.json') != ''
         run: |
           git config user.name "zeynmedia-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

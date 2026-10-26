@@ -2,8 +2,9 @@ import type {TemplateId} from '../schema';
 
 export const W = 1080;
 export const H = 1920;
-export const CHART_TOP = 580;
-export const CHART_BOTTOM = 1560;
+export const CHART_TOP = 530;
+// Bottom ~15% stays clear: YouTube Shorts overlays the channel name, title and buttons there
+export const CHART_BOTTOM = 1440;
 export const TICK_END_X = 1010;
 
 export type Layout = {
