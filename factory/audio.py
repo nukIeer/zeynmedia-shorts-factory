@@ -45,13 +45,16 @@ def sfx_events(stats, players, duration, intro_s):
 
 def audio_inputs(content, duration, intro_s, total_s):
     """Returns (ffmpeg input args, filter_complex, output label, description); inputs start at index 1."""
+    # content["music"] = {"path", "start"} and content["sfx"] = {kind: [paths]} override the bundled assets
+    override = content.get("music")
     tracks = _files(MUSIC_DIR)
-    music = random.choice(tracks) if tracks else None
-    pools = {kind: _files(SFX_DIR, kind) for kind in SFX_VOLUME}
+    music = Path(override["path"]) if override else (random.choice(tracks) if tracks else None)
+    start = float(override.get("start", 0)) if override else 0.0
+    pools = content.get("sfx") or {kind: _files(SFX_DIR, kind) for kind in SFX_VOLUME}
 
     args, labels, parts = [], [], []
     if music:
-        args += ["-stream_loop", "-1", "-i", str(music)]
+        args += ["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", str(music)]
         vol = 0.55 if any(pools.values()) else 0.8
         parts.append(f"[1:a]atrim=0:{total_s:.2f},afade=t=in:d=0.5,afade=t=out:st={total_s - 1.5:.2f}:d=1.5,volume={vol}[m]")
     else:

@@ -6,7 +6,9 @@ import type {ShortProps} from '../schema';
 import type {Theme} from '../theme/themes';
 import {BallIcon, TrophyIcon} from './Icons';
 
-const FLY_STEPS = 0.28;
+// Bubble pops and holds on the line so the +N is readable, then flies into the box
+export const HOLD_STEPS = 0.22;
+export const FLY_STEPS = 0.3;
 
 const StepPill: React.FC<{label: string; icon: ShortProps['stepIcon']; dark: boolean}> = ({label, icon, dark}) => (
 	<div
@@ -132,11 +134,13 @@ export const Columns: React.FC<{
 									let dy = y;
 									let scale = 1;
 									let o = 1;
-									if (past > 0) {
-										const a = easeInOutCubic(past / FLY_STEPS);
+									if (past > 0 && past <= HOLD_STEPS) {
+										scale = 1 + 0.3 * Math.sin((past / HOLD_STEPS) * Math.PI);
+									} else if (past > HOLD_STEPS) {
+										const a = easeInOutCubic((past - HOLD_STEPS) / FLY_STEPS);
 										dx = x + (boxRight[e.id] - 60 - x) * a;
 										scale = 1 - 0.6 * a;
-										o = past > FLY_STEPS ? 0 : 1;
+										o = past > HOLD_STEPS + FLY_STEPS ? 0 : 1;
 										dy = y - Math.sin(a * Math.PI) * 60;
 									}
 									if (o <= 0) return null;
