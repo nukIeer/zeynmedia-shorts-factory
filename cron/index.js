@@ -4,7 +4,7 @@
  * decides whether a video is due this hour.
  * Secret: GH_DISPATCH_TOKEN — fine-grained PAT with "Actions: Read and write" on the shorts repo only.
  */
-const REPO = 'nukIeer/zeynmedia-shorts-factory';
+const REPO = 'zeynmedia/zeynmedia-shorts-factory';
 const WORKFLOWS = ['shorts.yml', 'zeynel.yml'];
 
 const dispatch = (env, workflow) =>

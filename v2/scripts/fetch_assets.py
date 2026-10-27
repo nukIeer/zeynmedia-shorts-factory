@@ -19,7 +19,7 @@ V2 = Path(__file__).resolve().parent.parent
 PUBLIC = V2 / "public"
 INDEX = PUBLIC / "assets" / "index.json"
 SPORTSDB = "https://www.thesportsdb.com/api/v1/json/123"
-UA = {"User-Agent": "ZeynMediaShortsFactory/2.0 (github.com/nukIeer/zeynmedia-shorts-factory)"}
+UA = {"User-Agent": "ZeynMediaShortsFactory/2.0 (github.com/zeynmedia/zeynmedia-shorts-factory)"}
 
 
 def slug(text):

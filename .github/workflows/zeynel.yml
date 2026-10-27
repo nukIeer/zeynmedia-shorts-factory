@@ -79,7 +79,7 @@ jobs:
       # Music lives in the private repo; read-only deploy key
       - uses: actions/checkout@v4
         with:
-          repository: nukIeer/zeynmedia-music
+          repository: zeynmedia/zeynmedia-music
           ssh-key: ${{ secrets.MUSIC_DEPLOY_KEY }}
           path: music-repo
 

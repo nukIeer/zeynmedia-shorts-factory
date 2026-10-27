@@ -6,7 +6,7 @@ import urllib.parse
 
 import requests
 
-UA = {"User-Agent": "ZeynMediaShortsFactory/1.0 (https://github.com/nukIeer/zeynmedia-shorts-factory)"}
+UA = {"User-Agent": "ZeynMediaShortsFactory/1.0 (https://github.com/zeynmedia/zeynmedia-shorts-factory)"}
 
 
 def _data_url(url):
