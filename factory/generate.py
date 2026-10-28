@@ -83,7 +83,7 @@ GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:ge
 
 
 def _call_nim(prompt):
-    model = os.environ.get("NIM_MODEL") or "meta/llama-3.3-70b-instruct"
+    model = os.environ.get("NIM_MODEL") or "openai/gpt-oss-20b"
     resp = requests.post(
         NIM_URL,
         headers={"Authorization": f"Bearer {os.environ['NVIDIA_API_KEY']}", "Accept": "application/json"},
@@ -93,6 +93,7 @@ def _call_nim(prompt):
             "temperature": 0.8,
             "top_p": 0.95,
             "max_tokens": 3000,
+            **({"reasoning_effort": "low"} if model.startswith("openai/gpt-oss") else {}),
         },
         timeout=180,
     )

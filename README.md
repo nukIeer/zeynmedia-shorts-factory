@@ -40,7 +40,7 @@ Hiç AI key'i yoksa `config/presets.json` içindeki hazır içerikler sırayla k
 
 | Variable | Varsayılan | Açıklama |
 |---|---|---|
-| `NIM_MODEL` | `meta/llama-3.3-70b-instruct` | build.nvidia.com'daki herhangi bir chat modeli |
+| `NIM_MODEL` | `openai/gpt-oss-20b` | build.nvidia.com'daki herhangi bir chat modeli |
 | `CONTENT_LANG` | `tr` | `tr` veya `en` |
 | `YT_PRIVACY` | `public` | `public` / `unlisted` / `private` |
 
